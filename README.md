@@ -1,15 +1,18 @@
-# 添加utils 颜色，日期，double转固定格式
+# 个人学习flutter记录
 
-## 添加依赖
-```
-intl: ^0.16.1
-```
+[comment]: <> (## 添加依赖)
+
+[comment]: <> (```)
+
+[comment]: <> (intl: ^0.16.1)
+
+[comment]: <> (```)
 
 
 ## 学习说明（记录）
 
 + 参见flutter中文网 https://flutterchina.club/
-+ 视频教学地址 https://www.td0f7.cn/（）
++ 视频教学地址 https://www.td0f7.cn/
 + bean类转换官方地址 https://caijinglong.github.io/json2dart/index.html 详细使用移步百度
 + 宝典 http://laomengit.com/guide/widgets/DatePicker1.html
 + 官方提供的三方说明 https://pub.dev/
