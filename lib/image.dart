@@ -6,6 +6,7 @@ import 'package:photo_manager/photo_manager.dart';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 import 'package:heic_to_jpg/heic_to_jpg.dart';
+import 'package:untitled/utils/toash.dart';
 const double itemSpace = 10.0;
 const double space = 5.0; //上下左右间距
 const double deleBtnWH = 20.0;
@@ -57,35 +58,44 @@ class _JhPhotoPickerToolState extends State<JhPhotoPickerTool> {
     var itemWH = ninePictureW / maxCount;
     int columnCount = _imgData.length > 6 ? 3 : _imgData.length <= 3 ? 1 : 2;
 
-    return Container(
-        color: bgColor,
-        width: kScreenWidth - lfPadding,
-        height:
-        columnCount * itemWH + space * 2 + (columnCount - 1) * itemSpace,
-        child: GridView.builder(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              //可以直接指定每行（列）显示多少个Item
-              //一行的Widget数量
-              crossAxisCount: 3,
-              crossAxisSpacing: itemSpace, //水平间距
-              mainAxisSpacing: itemSpace, //垂直间距
-              childAspectRatio: 1.0, //子Widget宽高比例
-            ),
-            physics: NeverScrollableScrollPhysics(),
-            padding: EdgeInsets.all(space),
-            //GridView内边距
-            itemCount: _imgData.length== maxCount?_imgData.length: (_imgData.length + imgDefaultData.length),
-            itemBuilder: (context, index) {
-              if (_imgData.length == maxCount) {
-                return imgItem(index, setState, _imgData, imgPicked);
-              } else {
-                if (index == _imgData.length) {
-                  return addBtn(context, setState, imgDefaultData, imgPicked);
-                } else {
+    return Scaffold(
+      appBar: AppBar(
+        leading: null,
+        automaticallyImplyLeading: false,
+        title: Text("添加图片"),
+        centerTitle: true,
+        backgroundColor: Colors.red,
+      ),
+      body: Container(
+          color: bgColor,
+          width: kScreenWidth - lfPadding,
+          height:
+          columnCount * itemWH + space * 2 + (columnCount - 1) * itemSpace,
+          child: GridView.builder(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                //可以直接指定每行（列）显示多少个Item
+                //一行的Widget数量
+                crossAxisCount: 3,
+                crossAxisSpacing: itemSpace, //水平间距
+                mainAxisSpacing: itemSpace, //垂直间距
+                childAspectRatio: 1.0, //子Widget宽高比例
+              ),
+              physics: NeverScrollableScrollPhysics(),
+              padding: EdgeInsets.all(space),
+              //GridView内边距
+              itemCount: _imgData.length== maxCount?_imgData.length: (_imgData.length + imgDefaultData.length),
+              itemBuilder: (context, index) {
+                if (_imgData.length == maxCount) {
                   return imgItem(index, setState, _imgData, imgPicked);
+                } else {
+                  if (index == _imgData.length) {
+                    return addBtn(context, setState, imgDefaultData, imgPicked);
+                  } else {
+                    return imgItem(index, setState, _imgData, imgPicked);
+                  }
                 }
-              }
-            }));
+              })),
+    );
   }
 
   /** 添加按钮 */
@@ -213,7 +223,7 @@ class _JhPhotoPickerToolState extends State<JhPhotoPickerTool> {
         ]),
       ),
       onTap: () {
-        print("点击第${index}张图片");
+        Toast.toast(context, "点击了第${index}张图片");
       },
     );
   }

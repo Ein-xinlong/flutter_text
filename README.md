@@ -1,17 +1,27 @@
-# untitled
+# 添加utils 颜色，日期，double转固定格式
 
-A new Flutter project.
+## 添加依赖
+```
+intl: ^0.16.1
+```
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+## 学习说明（记录）
 
-A few resources to get you started if this is your first Flutter project:
++ 参见flutter中文网 https://flutterchina.club/
++ 视频教学地址 https://www.td0f7.cn/（）
++ bean类转换官方地址 https://caijinglong.github.io/json2dart/index.html 详细使用移步百度
++ 宝典 http://laomengit.com/guide/widgets/DatePicker1.html
++ 官方提供的三方说明 https://pub.dev/
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## 更新日志
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# flutter_text
+### 1.0.0+1
+
++ 添加了主页，3个tab。
+
+### 1.0.0+2
+
++ 添加utils 颜色，日期，double转固定格式。
++ 删除了无用文件，整理项目
+

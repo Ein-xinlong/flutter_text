@@ -27,7 +27,9 @@ class _MyHomePageState extends State<pageview> {
       appBar: AppBar(
         leading: null,
         automaticallyImplyLeading: false,
-        title: Text("widget.title"),
+        title: Text("PageView"),
+        centerTitle: true,
+        backgroundColor: Colors.red,
       ),
       body: PageView(
         scrollDirection: Axis.vertical,

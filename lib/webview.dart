@@ -56,6 +56,7 @@
 // }
 
 import 'package:flutter/material.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class SliverAppBarScreen extends StatefulWidget {
   SliverAppBarScreen({Key key}) : super(key: key);
@@ -67,35 +68,21 @@ class SliverAppBarScreen extends StatefulWidget {
 class _SliverAppBarScreenState extends State<SliverAppBarScreen> {
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: <Widget>[
-        SliverAppBar(
-          pinned: false,
-          expandedHeight: 200.0,
-          flexibleSpace: FlexibleSpaceBar(
-            collapseMode: CollapseMode.none,
-            title: Text('spectacular'),
-            background: Image.network(
-              'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1597491697639&di=b2de8a48915ca5d13c39f8ee0370e83a&imgtype=0&src=http%3A%2F%2Fbpic.588ku.com%2Fback_pic%2F00%2F11%2F12%2F6656371539b8f64.jpg',
-              fit: BoxFit.fitHeight,
-            ),
-          ),
+    return Scaffold(
+      appBar: AppBar(
+        leading: null,
+        automaticallyImplyLeading: false,
+        title: Text("WebView"),
+        centerTitle: true,
+        backgroundColor: Colors.red,
+      ),
+      body: Container(
+        child: WebView(
+          initialUrl: "https://www.baidu.com/",
+          //JS执行模式 是否允许JS执行
+          javascriptMode: JavascriptMode.unrestricted,
         ),
-        SliverList(
-            delegate: SliverChildBuilderDelegate(
-                    (BuildContext context,  int index) {
-                  return Card(
-                    child: Container(
-                      height: 50,
-                      color: Colors.primaries[(index % 17)],
-                      child: Text(''),
-                    ),
-                  );
-                },
-                childCount: 80
-            )
-        )
-      ],
+      ),
     );
   }
 }

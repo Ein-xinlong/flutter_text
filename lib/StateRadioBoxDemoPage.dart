@@ -20,7 +20,9 @@ class _StateRadioBoxDemoPageState extends State<StateRadioBoxDemoPage> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text("ListItem"),
+        title: new Text("单选列表"),
+        backgroundColor: Colors.red,
+        centerTitle: true,
       ),
       body: new ListView.builder(
         itemCount: sampleData.length,
