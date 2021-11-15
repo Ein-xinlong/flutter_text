@@ -58,6 +58,8 @@
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
+import 'commitUI/appbar.dart';
+
 class SliverAppBarScreen extends StatefulWidget {
   SliverAppBarScreen({Key key}) : super(key: key);
 
@@ -69,13 +71,11 @@ class _SliverAppBarScreenState extends State<SliverAppBarScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: null,
-        automaticallyImplyLeading: false,
-        title: Text("WebView"),
-        centerTitle: true,
-        backgroundColor: Colors.red,
-      ),
+      resizeToAvoidBottomPadding: false,
+      appBar: AnAppbar(
+          titleContent: "WebView",
+          backPressCallback: null
+      ).buildAppBar(),
       body: Container(
         child: WebView(
           initialUrl: "https://www.baidu.com/",

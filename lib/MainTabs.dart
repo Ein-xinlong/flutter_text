@@ -30,7 +30,7 @@ class _TabsState extends State<Tabs> {
     return Container(
       child: Scaffold(
 
-
+        resizeToAvoidBottomPadding:false,
         // 设置需要显示的内容。
         body: this._pageList[this._currentIndex],
         //创建tabbar
@@ -52,7 +52,7 @@ class _TabsState extends State<Tabs> {
             BottomNavigationBarItem(icon: Icon(Icons.home), label: "图片"),
             BottomNavigationBarItem(icon: Icon(Icons.category), label: "PageView"),
             BottomNavigationBarItem(icon: Icon(Icons.settings), label: "单选"),
-            BottomNavigationBarItem(icon: Icon(Icons.settings), label: "网页"),
+            BottomNavigationBarItem(icon: Icon(Icons.web), label: "网页"),
           ],
         ),
       ),

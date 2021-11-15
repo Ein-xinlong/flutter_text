@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 
 import 'package:photo/photo.dart';
@@ -8,6 +9,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:heic_to_jpg/heic_to_jpg.dart';
 import 'package:untitled/utils/toash.dart';
 import 'package:untitled/utils/tts.dart';
+import 'package:untitled/commitUI/appbar.dart';
 const double itemSpace = 10.0;
 const double space = 5.0; //上下左右间距
 const double deleBtnWH = 20.0;
@@ -60,13 +62,11 @@ class _JhPhotoPickerToolState extends State<JhPhotoPickerTool> {
     int columnCount = _imgData.length > 6 ? 3 : _imgData.length <= 3 ? 1 : 2;
 
     return Scaffold(
-      appBar: AppBar(
-        leading: null,
-        automaticallyImplyLeading: false,
-        title: Text("添加图片"),
-        centerTitle: true,
-        backgroundColor: Colors.red,
-      ),
+        resizeToAvoidBottomPadding:false,
+      appBar: AnAppbar(
+        titleContent: "图片加载",
+        backPressCallback: null
+      ).buildAppBar(),
       body: Column(
         children: [
           Container(
@@ -100,7 +100,32 @@ class _JhPhotoPickerToolState extends State<JhPhotoPickerTool> {
                   })),
           FlatButton(onPressed: (){
             TtsHelper.instance.setLanguageAndSpeak("你好我是测试语音", "zh");
-          }, child:Text("语音测试"),color: Colors.indigoAccent,)
+          }, child:Text("语音测试"),color: Colors.indigoAccent,),
+          Container(
+            width: 100,
+            child: TextField(
+              maxLines: 1,//最大行数
+              decoration: InputDecoration(
+                hintText: "请输入字体码",
+                border: InputBorder.none,
+              ),
+
+              textInputAction: TextInputAction.done,
+              inputFormatters: [
+                LengthLimitingTextInputFormatter(50)
+
+              ],
+
+              onChanged: (text) {
+                //内容改变的回调
+                print('change $text');
+              },
+              onSubmitted: (text) {
+                //内容提交(按回车)的回调
+                print('submit $text');
+              },
+            ),
+          )
         ],
       ),
     );

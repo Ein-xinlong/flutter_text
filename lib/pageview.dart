@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'commitUI/appbar.dart';
+
 class pageview extends StatefulWidget {
 
 
@@ -24,13 +26,10 @@ class _MyHomePageState extends State<pageview> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: null,
-        automaticallyImplyLeading: false,
-        title: Text("PageView"),
-        centerTitle: true,
-        backgroundColor: Colors.red,
-      ),
+      appBar: AnAppbar(
+          titleContent: "PageView",
+          backPressCallback: null
+      ).buildAppBar(),
       body: PageView(
         scrollDirection: Axis.vertical,
         reverse: false,

@@ -14,6 +14,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: _title,
       home: Scaffold(
+
+        resizeToAvoidBottomPadding:false,
         body: Tabs(),
       ),
     );
