@@ -35,3 +35,12 @@
 + 主要方法 TtsHelper.instance.setLanguageAndSpeak("你好我是测试语音", "zh");
 
 
+### 1.0.0+4
+
++ 修改demo名称AnDemo
++ 增加commitUI(通用appbar，通用button，通用dialog，通用loding「加载网络时显示」)
++ 所有toolbar换成通用AnAppbar
++ 修复单选列表不能居中的问题，
++ 修复webview页面软键盘导致的布局异常
+
+
