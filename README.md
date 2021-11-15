@@ -28,3 +28,10 @@
 + 添加utils 颜色，日期，double转固定格式。
 + 删除了无用文件，整理项目
 
+### 1.0.0+3
+
++ 添加语音播报
++ 三方 tts: ^1.0.2
++ 主要方法 TtsHelper.instance.setLanguageAndSpeak("你好我是测试语音", "zh");
+
+
