@@ -23,10 +23,12 @@
 
 + 添加了主页，3个tab。
 
+
 ### 1.0.0+2
 
 + 添加utils 颜色，日期，double转固定格式。
 + 删除了无用文件，整理项目
+
 
 ### 1.0.0+3
 
@@ -42,5 +44,14 @@
 + 所有toolbar换成通用AnAppbar
 + 修复单选列表不能居中的问题，
 + 修复webview页面软键盘导致的布局异常
+
+
+### 1.0.0+5
+
++ 封装网络框架dio（AnNetwork.shareInstance()获取dio对象）
++ 主页增加get接口测试，post接口测试，（点击后请求，按钮变为绿色请求成功）
++ 增加loading展示，有延迟操作时展示loading（比如网络请求数据没回来之前）
++ 增加AnBaseViewModel   实现数据和widget的分开管理
+
 
 
