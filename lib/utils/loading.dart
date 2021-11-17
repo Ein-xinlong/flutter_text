@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import 'LoadingDialog.dart';
+import 'loading_dialog.dart';
 
 class AnLoading {
   static OverlayEntry gloableLoadingEntry;

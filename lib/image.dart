@@ -1,3 +1,5 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:photo/photo.dart';
@@ -5,7 +7,8 @@ import 'package:photo_manager/photo_manager.dart';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 import 'package:heic_to_jpg/heic_to_jpg.dart';
-import 'package:untitled/utils/LoadingDialog.dart';
+import 'package:untitled/router.dart';
+import 'package:untitled/utils/loading_dialog.dart';
 import 'package:untitled/utils/common_body.dart';
 import 'package:untitled/utils/loading.dart';
 import 'package:untitled/utils/toash.dart';
@@ -108,7 +111,7 @@ class _JhPhotoPickerToolState extends State<JhPhotoPickerTool> {
                          })),
                  FlatButton(onPressed: (){
                    TtsHelper.instance.setLanguageAndSpeak("你好我是测试语音", "zh");
-                 }, child:Text("语音测试"),color: Colors.indigoAccent,),
+                 }, child:Text("语音测试"),color: Colors.black12,),
                  FlatButton(onPressed: (){
                    vm.showloadState();
                    vm.text();
@@ -121,6 +124,10 @@ class _JhPhotoPickerToolState extends State<JhPhotoPickerTool> {
                    // dialog(context);
 
                  }, child:Text("post接口测试"),color: vm.postCorrect? Colors.green: Colors.red,),
+
+                 FlatButton(onPressed: (){
+                   Navigator.pushNamed(context, Routers.ROUTER_CALENDAR);
+                 }, child:Text("日历页面"),color: Colors.black12,),
 
                  Container(
                    width: 100,

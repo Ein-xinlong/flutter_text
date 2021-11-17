@@ -1,8 +1,9 @@
-import 'dart:io';
+
 
 import 'package:flutter/material.dart';
+import 'package:untitled/router.dart';
 import 'MainTabs.dart';
-import 'image.dart';
+import 'calendar.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,8 +14,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: _title,
+      routes: {
+        Routers.ROUTER_CALENDAR:(context)=>CalendarPage(),
+      },
       home: Scaffold(
-
         resizeToAvoidBottomPadding:false,
         body: Tabs(),
       ),
