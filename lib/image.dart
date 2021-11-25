@@ -52,7 +52,7 @@ class _JhPhotoPickerToolState extends State<JhPhotoPickerTool> {
                children: [
 
                  FlatButton(onPressed: (){
-                   TtsHelper.instance.setLanguageAndSpeak("你好我是测试语音", "zh");
+                   TtsHelper.instance.setLanguageAndSpeak("Hello, welcome to my demo", "en");
                  }, child:Text("语音测试"),color: Colors.black12,),
                  FlatButton(onPressed: (){
                    vm.showloadState();
