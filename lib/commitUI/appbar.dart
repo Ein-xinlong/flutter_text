@@ -8,16 +8,18 @@ class AnAppbar {
   Widget titleWidget; //中间位置widget
   Function backPressCallback; //为null，则不展示返回
   Widget actionWidget; //右侧action
-
+  Color color;//background颜色
   AnAppbar(
       {this.titleContent,
         this.titleWidget,
         this.backPressCallback,
-        this.actionWidget});
+        this.actionWidget,
+        this.color
+      });
 
   AppBar buildAppBar() {
     return AppBar(
-        backgroundColor: Colors.red,
+        backgroundColor: color==null?Colors.red:color,
         elevation: 0,
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(1),

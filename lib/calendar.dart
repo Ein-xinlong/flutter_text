@@ -23,6 +23,7 @@ class _CalendarPageState extends State<CalendarPage> {
     return Scaffold(
       appBar: AnAppbar(
         titleContent: "日历",
+          color:Colors.amber,
         backPressCallback: (){
           Navigator.pop(context);
         }
