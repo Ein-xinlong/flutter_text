@@ -45,7 +45,7 @@ class _TabsState extends State<Tabs> {
           //设置图标尺寸
           iconSize: 20,
           //设置选中图标的颜色
-          fixedColor: Colors.red,
+          fixedColor: Color(0xFF003333),
           type:BottomNavigationBarType.fixed,
           //设置item
           items: [

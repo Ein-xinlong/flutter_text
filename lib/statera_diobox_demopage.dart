@@ -66,10 +66,12 @@ class RadioItem extends StatelessWidget {
                   size: 14,
                 )),
             decoration:  BoxDecoration(
-              color: _item.isSelected ? Color(0xFF414CCA) : Colors.transparent,
+              color: _item.isSelected ? Color(0xFF99CC33
+              ) : Colors.transparent,
               border: new Border.all(
                   width: 1.0,
-                  color: _item.isSelected ? Color(0xFF414CCA) : Colors.grey),
+                  color: _item.isSelected ? Color(0xFF99CC33
+                  ) : Colors.grey),
               borderRadius: const BorderRadius.all(const Radius.circular(50.0)),
             ),
           ),

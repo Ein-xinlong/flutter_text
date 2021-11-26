@@ -10,7 +10,7 @@ class TextButtonPurple extends StatelessWidget {
   TextStyle textStyle;
   bool isDisabled = false;
   BorderRadius _borderRadius = BorderRadius.all(Radius.circular(100));
-  List<Color> _colors = [Color(0xFF5C6CE4), Color(0xFF3137BA)];
+  List<Color> _colors = [Color(0xFFFFCC99), Color(0xFF99CC99)];
 
   TextButtonPurple(
       {this.text,

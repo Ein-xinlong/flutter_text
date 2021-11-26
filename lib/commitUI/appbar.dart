@@ -19,7 +19,7 @@ class AnAppbar {
 
   AppBar buildAppBar() {
     return AppBar(
-        backgroundColor: color==null?Colors.red:color,
+        backgroundColor: color==null?Color(0xFF99CC99):color,
         elevation: 0,
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(1),

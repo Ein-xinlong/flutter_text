@@ -46,7 +46,7 @@ class _MyHomePageState extends State<pageview> {
         },
         children: <Widget>[
           Container(
-            color: Colors.tealAccent,
+            color: Color(0xFFFFCC99),
             child: Center(
               child: Text(
                 '第1页',
@@ -55,7 +55,7 @@ class _MyHomePageState extends State<pageview> {
             ),
           ),
           Container(
-            color: Colors.greenAccent,
+            color:Color(0xFFFFFFCC),
             child: Center(
               child: Text(
                 '第2页',
@@ -64,7 +64,7 @@ class _MyHomePageState extends State<pageview> {
             ),
           ),
           Container(
-            color: Colors.deepOrange,
+            color: Color(0xFF99CCFF),
             child: Center(
               child: Text(
                 '第3页',

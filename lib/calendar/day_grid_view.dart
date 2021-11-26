@@ -198,10 +198,10 @@ class _DayGridViewState extends State<DayGridView> {
       return WHITE;
     }else{
       if(startTime!=null&&value==startTime){
-        return Colors.green;
+        return Color(0xFF6699CC);
       }
       if(endTime!=null&&value==endTime){
-        return Colors.green;
+        return Color(0xFF6699CC);
       }
       if(startTime!=null&&endTime!=null){
         if(value.isAfter(startTime)&&value.isBefore(endTime)){

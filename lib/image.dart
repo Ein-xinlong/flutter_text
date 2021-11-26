@@ -10,6 +10,8 @@ import 'package:untitled/commitUI/appbar.dart';
 import 'package:untitled/vm/image_viewmodel.dart';
 import 'package:provider/provider.dart';
 
+import 'commitUI/button.dart';
+
 
 class JhPhotoPickerTool extends StatefulWidget {
 
@@ -50,26 +52,38 @@ class _JhPhotoPickerToolState extends State<JhPhotoPickerTool> {
            children: [
              Column(
                children: [
-
-                 FlatButton(onPressed: (){
+                 Container(child: TextButtonPurple(text: "语音测试",onPressed: (){
                    TtsHelper.instance.setLanguageAndSpeak("Hello, welcome to my demo", "en");
-                 }, child:Text("语音测试"),color: Colors.black12,),
-                 FlatButton(onPressed: (){
+                 },),width: double.infinity,),
+                 SizedBox(height: 10,),
+                 Container(
+                   decoration: BoxDecoration(
+                       borderRadius: BorderRadius.circular(20),
+                     color:vm.getCorrect? Color(0xFFFFCC99): Color(0xFF99CC99),
+                   ),
+                   child: FlatButton(onPressed: (){
                    vm.showloadState();
                    vm.text();
                    // dialog(context);
 
-                 }, child:Text("get接口测试"),color:vm.getCorrect? Colors.green: Colors.red,),
-                 FlatButton(onPressed: (){
-                   vm.showloadState();
-                   vm.postText();
-                   // dialog(context);
+                 }, child:Text("get接口测试"),),width: double.infinity,),
+                 SizedBox(height: 10,),
+                 Container(
+                   decoration: BoxDecoration(
+                       borderRadius: BorderRadius.circular(20),
+                     color:vm.postCorrect?Color(0xFFFFCC99):Color(0xFF99CC99),
+                   ),
+                   child: FlatButton(onPressed: (){
+                     vm.showloadState();
+                     vm.postText();
+                     // dialog(context);
 
-                 }, child:Text("post接口测试"),color: vm.postCorrect? Colors.green: Colors.red,),
-
-                 FlatButton(onPressed: (){
+                   }, child:Text("post接口测试"),),width: double.infinity,),
+                 SizedBox(height: 10,),
+                 Container(child: TextButtonPurple(text: "日历页面",onPressed: (){
                    Navigator.pushNamed(context, Routers.ROUTER_CALENDAR);
-                 }, child:Text("日历页面"),color: Colors.black12,),
+                 },),width: double.infinity,),
+
 
                  Container(
                    width: 100,
