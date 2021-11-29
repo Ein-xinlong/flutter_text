@@ -42,7 +42,7 @@ class _JhPhotoPickerToolState extends State<JhPhotoPickerTool> {
     return Scaffold(
         resizeToAvoidBottomPadding:false,
       appBar: AnAppbar(
-        titleContent: "图片加载",
+        titleContent: "主页",
         backPressCallback: null
       ).buildAppBar(),
       body: ChangeNotifierProvider(
@@ -82,6 +82,10 @@ class _JhPhotoPickerToolState extends State<JhPhotoPickerTool> {
                  SizedBox(height: 10,),
                  Container(child: TextButtonPurple(text: "日历页面",onPressed: (){
                    Navigator.pushNamed(context, Routers.ROUTER_CALENDAR);
+                 },),width: double.infinity,),
+                 SizedBox(height: 10,),
+                 Container(child: TextButtonPurple(text: "炫酷时钟",onPressed: (){
+                   Navigator.pushNamed(context, Routers.ROUTER_CLOCK);
                  },),width: double.infinity,),
 
 

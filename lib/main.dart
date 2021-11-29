@@ -1,6 +1,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:untitled/page_clock.dart';
 import 'package:untitled/router.dart';
 import 'MainTabs.dart';
 import 'calendar.dart';
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
       title: _title,
       routes: {
         Routers.ROUTER_CALENDAR:(context)=>CalendarPage(),
+        Routers.ROUTER_CLOCK:(context)=>Clock(),
       },
       home: Scaffold(
         resizeToAvoidBottomPadding:false,
