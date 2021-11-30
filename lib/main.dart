@@ -5,6 +5,7 @@ import 'package:untitled/page_clock.dart';
 import 'package:untitled/router.dart';
 import 'MainTabs.dart';
 import 'calendar.dart';
+import 'drow_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
       routes: {
         Routers.ROUTER_CALENDAR:(context)=>CalendarPage(),
         Routers.ROUTER_CLOCK:(context)=>Clock(),
+        Routers.ROUTER_DROWPAGE:(context)=>DrowPage(),
       },
       home: Scaffold(
         resizeToAvoidBottomPadding:false,

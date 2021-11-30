@@ -87,6 +87,10 @@ class _JhPhotoPickerToolState extends State<JhPhotoPickerTool> {
                  Container(child: TextButtonPurple(text: "炫酷时钟",onPressed: (){
                    Navigator.pushNamed(context, Routers.ROUTER_CLOCK);
                  },),width: double.infinity,),
+                 SizedBox(height: 10,),
+                 Container(child: TextButtonPurple(text: "白板",onPressed: (){
+                   Navigator.pushNamed(context, Routers.ROUTER_DROWPAGE);
+                 },),width: double.infinity,),
 
 
                  Container(

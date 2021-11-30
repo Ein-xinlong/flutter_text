@@ -125,18 +125,18 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_plugin_android_lifecycle:
-    dependency: transitive
-    description:
-      name: flutter_plugin_android_lifecycle
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "1.0.11"
   flutter_test:
     dependency: "direct dev"
     description: flutter
     source: sdk
     version: "0.0.0"
+  get:
+    dependency: "direct main"
+    description:
+      name: get
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "3.26.0"
   http_parser:
     dependency: transitive
     description:
@@ -158,13 +158,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "3.1.1"
-  local_auth:
-    dependency: "direct main"
-    description:
-      name: local_auth
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "0.6.3+4"
   matcher:
     dependency: transitive
     description:

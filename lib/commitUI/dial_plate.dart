@@ -101,7 +101,7 @@ class DialPlate extends CustomPainter {
 
       Paragraph paragraph = _timeParagraphBuilder.build();
       paragraph.layout(ParagraphConstraints(width: 230));
-      canvas.drawParagraph(paragraph, Offset(-115,-42));
+      canvas.drawParagraph(paragraph, Offset(-115,-45));
       canvas.restore();
     }
 
