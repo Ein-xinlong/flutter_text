@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:untitled/router.dart';
 import 'package:untitled/utils/common_body.dart';
 import 'package:untitled/utils/loading.dart';
@@ -11,6 +12,7 @@ import 'package:untitled/vm/image_viewmodel.dart';
 import 'package:provider/provider.dart';
 
 import 'commitUI/button.dart';
+import 'drow_page.dart';
 
 
 class JhPhotoPickerTool extends StatefulWidget {
@@ -88,9 +90,41 @@ class _JhPhotoPickerToolState extends State<JhPhotoPickerTool> {
                    Navigator.pushNamed(context, Routers.ROUTER_CLOCK);
                  },),width: double.infinity,),
                  SizedBox(height: 10,),
+                 
                  Container(child: TextButtonPurple(text: "白板",onPressed: (){
-                   Navigator.pushNamed(context, Routers.ROUTER_DROWPAGE);
+                   //普通路由跳转
+                   //Navigator.pushNamed(context, Routers.ROUTER_DROWPAGE);
+                   //git跳转
+                   Get.to(() => DrowPage(),fullscreenDialog: true,transition: Transition.size,curve: Curves.ease,duration: Duration(milliseconds: 700));
                  },),width: double.infinity,),
+                 SizedBox(height: 10,),
+                 Container(child: TextButtonPurple(text: "切换主题",onPressed: (){
+                   Get.bottomSheet(
+                       Container(
+                     child: Wrap(
+                       children: [
+                         ListTile(
+                           leading: Icon(Icons.wb_sunny_outlined),
+                           title: Text("白天模式"),
+                           onTap: () {
+                             Get.changeTheme(ThemeData.light());
+                           },
+                         ),
+                         ListTile(
+                           leading: Icon(Icons.wb_sunny),
+                           title: Text("黑夜模式"),
+                           onTap: () {
+                             Get.changeTheme(ThemeData.dark());
+                           },
+                         )
+                       ],
+                     ),
+                   ),
+                   backgroundColor: Colors.grey
+                   );
+
+                 },),width: double.infinity,),
+                 SizedBox(height: 10,),
 
 
                  Container(

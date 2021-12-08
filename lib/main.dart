@@ -1,6 +1,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:untitled/page_clock.dart';
 import 'package:untitled/router.dart';
 import 'MainTabs.dart';
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: _title,
       routes: {
         Routers.ROUTER_CALENDAR:(context)=>CalendarPage(),
