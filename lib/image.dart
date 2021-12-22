@@ -10,6 +10,7 @@ import 'package:untitled/utils/tts.dart';
 import 'package:untitled/commitUI/appbar.dart';
 import 'package:untitled/vm/image_viewmodel.dart';
 import 'package:provider/provider.dart';
+import 'package:untitled/wan_android_home.dart';
 
 import 'commitUI/button.dart';
 import 'drow_page.dart';
@@ -123,6 +124,10 @@ class _JhPhotoPickerToolState extends State<JhPhotoPickerTool> {
                    backgroundColor: Colors.grey
                    );
 
+                 },),width: double.infinity,),
+                 SizedBox(height: 10,),
+                 Container(child: TextButtonPurple(text: "玩android",onPressed: (){
+                   Get.to(AndroidHome());
                  },),width: double.infinity,),
                  SizedBox(height: 10,),
 

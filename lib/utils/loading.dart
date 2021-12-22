@@ -55,7 +55,7 @@ class PdaLoadingView extends StatelessWidget {
       color: Color(0x60000000),
       alignment: Alignment.center,
       child: LoadingDialog( //调用对话框
-        text: '正在获取详情...',
+        text: '正在加载...',
       ),
     );
   }

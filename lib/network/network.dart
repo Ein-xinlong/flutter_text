@@ -18,13 +18,13 @@ class PdaNetworkConfig {
   String _proxy;
   var _environments = {
     AnNetworkEnv.Product: PdaNetworkEnvironment(
-      baseUrl: 'https://httpbin.org/',
+      baseUrl: 'https://www.wanandroid.com/',///https://httpbin.org/  测试get post接口
     ),
     AnNetworkEnv.Prepub: PdaNetworkEnvironment(
-      baseUrl: 'https://httpbin.org/',
+      baseUrl: 'https://www.wanandroid.com/',
     ),
     AnNetworkEnv.Develop: PdaNetworkEnvironment(
-      baseUrl: 'https://httpbin.org/',
+      baseUrl: 'https://www.wanandroid.com/',
     ),
   };
 
