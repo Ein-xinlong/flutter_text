@@ -62,7 +62,7 @@ class RadioItem extends StatelessWidget {
             child: Center(
                 child: Icon(
                   Icons.check,
-                  color: Colors.white,
+                  color:_item.isSelected ? Colors.white: Colors.transparent,
                   size: 14,
                 )),
             decoration:  BoxDecoration(

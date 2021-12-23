@@ -89,11 +89,14 @@
 + 增加玩android页面，调试接口
 + 增加通用banner
 +   transparent_image: ^0.1.0  缓存图片
-    build_runner: ^1.10.0    构造bean类
-    json_serializable: ^3.5.0    bean类序列化
-    flutter_easyrefresh: ^2.1.0    上拉加载下拉刷新
++   build_runner: ^1.10.0    构造bean类
++   json_serializable: ^3.5.0    bean类序列化
++   flutter_easyrefresh: ^2.1.0    上拉加载下拉刷新
 
+### 1.0.0+13
 
++ 修复玩android主页面刷新banner数量增加
++ 单选列表黑夜模式下能看到对号
 
 
 

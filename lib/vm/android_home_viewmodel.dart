@@ -25,7 +25,7 @@ class AndroidHomeVm extends AnBaseViewModel{
         success: (response){
           isShow=true;
           BannerBean bean=  BannerBean.fromJson(response.data);
-
+          itemBean.clear();
         for(int i=0;i<bean.data.length;i++){
           itemBean.add(BannerItem.defaultBannerItem(bean.data[i].imagePath, bean.data[i].title));
         }
