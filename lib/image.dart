@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'package:untitled/router.dart';
 import 'package:untitled/utils/common_body.dart';
@@ -25,11 +26,19 @@ class JhPhotoPickerTool extends StatefulWidget {
 class _JhPhotoPickerToolState extends State<JhPhotoPickerTool> {
 
   ImageViewModel vm=new ImageViewModel();
+  final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-
+    var an = new AndroidInitializationSettings('@mipmap/ic_launcher');
+    var io = new IOSInitializationSettings();
+    var mac = new MacOSInitializationSettings();
+    final InitializationSettings initializationSettings = InitializationSettings(android: an,iOS: io,macOS: mac);
+    //flutterLocalNotificationsPlugin.initialize(initializationSettings,);
+    flutterLocalNotificationsPlugin.initialize(initializationSettings,
+        onSelectNotification: selectNotification);
   }
 
   @override
@@ -131,32 +140,34 @@ class _JhPhotoPickerToolState extends State<JhPhotoPickerTool> {
                  },),width: double.infinity,),
                  SizedBox(height: 10,),
 
-
-                 Container(
-                   width: 100,
-                   child: TextField(
-                     maxLines: 1,//最大行数
-                     decoration: InputDecoration(
-                       hintText: "请输入字体码",
-                       border: InputBorder.none,
-                     ),
-
-                     textInputAction: TextInputAction.done,
-                     inputFormatters: [
-                       LengthLimitingTextInputFormatter(50)
-
-                     ],
-
-                     onChanged: (text) {
-                       //内容改变的回调
-                       print('change $text');
-                     },
-                     onSubmitted: (text) {
-                       //内容提交(按回车)的回调
-                       print('submit $text');
-                     },
-                   ),
-                 )
+                 Container(child: TextButtonPurple(text: "通知",onPressed: (){
+                   _showNotification();
+                 },),width: double.infinity,),
+                 // Container(
+                 //   width: 100,
+                 //   child: TextField(
+                 //     maxLines: 1,//最大行数
+                 //     decoration: InputDecoration(
+                 //       hintText: "请输入字体码",
+                 //       border: InputBorder.none,
+                 //     ),
+                 //
+                 //     textInputAction: TextInputAction.done,
+                 //     inputFormatters: [
+                 //       LengthLimitingTextInputFormatter(50)
+                 //
+                 //     ],
+                 //
+                 //     onChanged: (text) {
+                 //       //内容改变的回调
+                 //       print('change $text');
+                 //     },
+                 //     onSubmitted: (text) {
+                 //       //内容提交(按回车)的回调
+                 //       print('submit $text');
+                 //     },
+                 //   ),
+                 // )
                ],
              ),
              Offstage(
@@ -171,6 +182,21 @@ class _JhPhotoPickerToolState extends State<JhPhotoPickerTool> {
         },
       ),
     );
+  }
+  Future<void> _showNotification() async {
+    var androidPlatformChannelSpecifics = new AndroidNotificationDetails(
+        'your channel id', 'your channel name', 'your channel description',
+        importance: Importance.max, priority: Priority.high);
+    var iOSPlatformChannelSpecifics = new IOSNotificationDetails();
+    var mac = new MacOSNotificationDetails();
+    NotificationDetails platformChannelSpecifics = NotificationDetails(android: androidPlatformChannelSpecifics,iOS: iOSPlatformChannelSpecifics,macOS:mac);
+    await flutterLocalNotificationsPlugin.show(0, 'AnDemo', '测试发送通知成功', platformChannelSpecifics,payload: 'item x');
+  }
+  Future selectNotification(String payload) async {
+    if (payload != null) {
+      debugPrint('notification payload: $payload');
+    }
+     Get.to(AndroidHome());
   }
 
 
