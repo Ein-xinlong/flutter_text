@@ -3,7 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:untitled/page_clock.dart';
+import 'package:untitled/random_number.dart';
 import 'package:untitled/router.dart';
+import 'package:untitled/unit_splash.dart';
 import 'package:untitled/wan_android_home.dart';
 import 'MainTabs.dart';
 import 'calendar.dart';
@@ -23,10 +25,12 @@ class MyApp extends StatelessWidget {
         Routers.ROUTER_CLOCK:(context)=>Clock(),
         Routers.ROUTER_DROWPAGE:(context)=>DrowPage(),
         Routers.ROUTER_WANANDROID:(context)=>AndroidHome(),
+        Routers.ROUTER_MAIN:(context)=>Tabs(),
+        Routers.ROUTER_RANDOMNUMBER:(context)=>RandomNumber(),
       },
       home: Scaffold(
         resizeToAvoidBottomPadding:false,
-        body: Tabs(),
+        body: UnitSplash(),
       ),
     );
   }

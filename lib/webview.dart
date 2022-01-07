@@ -78,7 +78,7 @@ class _SliverAppBarScreenState extends State<SliverAppBarScreen> {
       ).buildAppBar(),
       body: Container(
         child: WebView(
-          initialUrl: "https://www.androidos.net.cn/sourcecode",
+          initialUrl: "https://app.4399.cn/app-wap-qd-fxhd4399.html",
           //JS执行模式 是否允许JS执行
           javascriptMode: JavascriptMode.unrestricted,
         ),
