@@ -2,6 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:untitled/bean/new_page_bean.dart';
+import 'package:untitled/new_details.dart';
+import 'package:untitled/news_page.dart';
 import 'package:untitled/page_clock.dart';
 import 'package:untitled/random_number.dart';
 import 'package:untitled/router.dart';
@@ -27,6 +30,8 @@ class MyApp extends StatelessWidget {
         Routers.ROUTER_WANANDROID:(context)=>AndroidHome(),
         Routers.ROUTER_MAIN:(context)=>Tabs(),
         Routers.ROUTER_RANDOMNUMBER:(context)=>RandomNumber(),
+        Routers.ROUTER_NEWPAGE:(context)=>NewsPage(),
+        Routers.ROUTER_NEWDETAILS:(context)=>NewDetails(Result("","","测试","")),
       },
       home: Scaffold(
         resizeToAvoidBottomPadding:false,

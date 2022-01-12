@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
+import 'package:untitled/news_page.dart';
 import 'package:untitled/random_number.dart';
 import 'package:untitled/router.dart';
 import 'package:untitled/utils/common_body.dart';
@@ -16,6 +17,7 @@ import 'package:untitled/wan_android_home.dart';
 
 import 'commitUI/button.dart';
 import 'drow_page.dart';
+import 'girl_list_page.dart';
 
 
 class JhPhotoPickerTool extends StatefulWidget {
@@ -148,6 +150,14 @@ class _JhPhotoPickerToolState extends State<JhPhotoPickerTool> {
                    SizedBox(height: 10,),
                    Container(child: TextButtonPurple(text: "随机数",onPressed: (){
                      Get.to(RandomNumber());
+                   },),width: double.infinity,),
+                   SizedBox(height: 10,),
+                   Container(child: TextButtonPurple(text: "新闻",onPressed: (){
+                     Get.to(NewsPage());
+                   },),width: double.infinity,),
+                   SizedBox(height: 10,),
+                   Container(child: TextButtonPurple(text: "美女",onPressed: (){
+                     Get.to(GirlPage());
                    },),width: double.infinity,),
                  ],
                ),
