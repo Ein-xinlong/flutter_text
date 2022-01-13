@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:untitled/bean/new_page_bean.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-import 'commitUI/appbar.dart';
+import '../commitUI/appbar.dart';
 
 class NewDetails extends StatefulWidget {///新闻详情页，由列表页传过来数据
   Result result;

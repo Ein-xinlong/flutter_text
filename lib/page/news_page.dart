@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:untitled/bean/new_page_bean.dart';
 import 'package:untitled/commitUI/appbar.dart';
 import 'package:untitled/commitUI/button.dart';
-import 'package:untitled/new_details.dart';
+import 'package:untitled/page/new_details.dart';
 import 'package:untitled/utils/common_body.dart';
 import 'package:untitled/vm/new_page_vm.dart';
 

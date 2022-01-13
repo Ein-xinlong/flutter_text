@@ -8,7 +8,7 @@ import 'package:untitled/utils/common_body.dart';
 import 'package:untitled/utils/loading.dart';
 import 'package:untitled/vm/android_home_viewmodel.dart';
 
-import 'commitUI/banner.dart';
+import '../commitUI/banner.dart';
 
 class AndroidHome extends StatefulWidget {
   @override

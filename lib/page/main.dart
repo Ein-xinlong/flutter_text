@@ -3,15 +3,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:untitled/bean/new_page_bean.dart';
-import 'package:untitled/new_details.dart';
-import 'package:untitled/news_page.dart';
-import 'package:untitled/page_clock.dart';
-import 'package:untitled/random_number.dart';
-import 'package:untitled/router.dart';
-import 'package:untitled/unit_splash.dart';
-import 'package:untitled/wan_android_home.dart';
+import 'package:untitled/page/new_details.dart';
+import 'package:untitled/page/news_page.dart';
+import 'package:untitled/page/page_clock.dart';
+import 'package:untitled/page/random_number.dart';
+import 'package:untitled/page/router.dart';
+
+import 'package:untitled/page/unit_splash.dart';
+import 'package:untitled/page/wan_android_home.dart';
 import 'MainTabs.dart';
 import 'calendar.dart';
+import 'driving_book.dart';
 import 'drow_page.dart';
 
 void main() => runApp(MyApp());
@@ -32,6 +34,7 @@ class MyApp extends StatelessWidget {
         Routers.ROUTER_RANDOMNUMBER:(context)=>RandomNumber(),
         Routers.ROUTER_NEWPAGE:(context)=>NewsPage(),
         Routers.ROUTER_NEWDETAILS:(context)=>NewDetails(Result("","","测试","")),
+        Routers.ROUTER_DRIVINGBOOK:(context)=>DrivingBook(),
       },
       home: Scaffold(
         resizeToAvoidBottomPadding:false,

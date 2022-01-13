@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:untitled/bean/girl_page_bean.dart';
+import 'package:untitled/commitUI/appbar.dart';
 import 'package:untitled/utils/common_body.dart';
 import 'package:untitled/utils/image.dart';
 import 'package:untitled/vm/girl_page_vm.dart';
 
-import 'bean/girl_page_bean.dart';
-import 'commitUI/appbar.dart';
+
 class GirlPage extends StatefulWidget {
 
 
@@ -20,6 +21,7 @@ class _GirlPageState extends State<GirlPage> {
   void initState() {
     super.initState();
     _vm.getList();
+
   }
 
   @override

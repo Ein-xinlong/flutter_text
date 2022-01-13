@@ -7,7 +7,7 @@ import 'package:untitled/commitUI/appbar.dart';
 import 'package:untitled/utils/random_number.dart';
 import 'package:untitled/utils/toash.dart';
 
-import 'commitUI/button.dart';
+import '../commitUI/button.dart';
 class RandomNumber extends StatefulWidget {
 
   @override

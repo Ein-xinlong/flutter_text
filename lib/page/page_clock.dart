@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import 'commitUI/dial_plate.dart';
+import '../commitUI/dial_plate.dart';
 
 
 

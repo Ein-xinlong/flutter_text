@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import 'package:untitled/utils/unit_paint.dart';
 
 import 'MainTabs.dart';
-import 'commitUI/flutter_unit_text.dart';
+import '../commitUI/flutter_unit_text.dart';
 
 
 class UnitSplash extends StatefulWidget {

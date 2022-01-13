@@ -4,20 +4,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
-import 'package:untitled/news_page.dart';
-import 'package:untitled/random_number.dart';
-import 'package:untitled/router.dart';
+import 'package:untitled/page/news_page.dart';
+import 'package:untitled/page/random_number.dart';
+import 'package:untitled/page/router.dart';
+
 import 'package:untitled/utils/common_body.dart';
 import 'package:untitled/utils/loading.dart';
 import 'package:untitled/utils/tts.dart';
 import 'package:untitled/commitUI/appbar.dart';
 import 'package:untitled/vm/image_viewmodel.dart';
 import 'package:provider/provider.dart';
-import 'package:untitled/wan_android_home.dart';
+import 'package:untitled/page/wan_android_home.dart';
 
-import 'commitUI/button.dart';
+import '../commitUI/button.dart';
+import 'driving_book.dart';
 import 'drow_page.dart';
 import 'girl_list_page.dart';
+
 
 
 class JhPhotoPickerTool extends StatefulWidget {
@@ -158,6 +161,10 @@ class _JhPhotoPickerToolState extends State<JhPhotoPickerTool> {
                    SizedBox(height: 10,),
                    Container(child: TextButtonPurple(text: "美女",onPressed: (){
                      Get.to(GirlPage());
+                   },),width: double.infinity,),
+                   SizedBox(height: 10,),
+                   Container(child: TextButtonPurple(text: "驾照考试题",onPressed: (){
+                     Get.to(DrivingBook());
                    },),width: double.infinity,),
                  ],
                ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:untitled/commitUI/appbar.dart';
 
-import 'calendar/calendar.dart';
+import '../calendar/calendar.dart';
 
 class CalendarPage extends StatefulWidget {
 

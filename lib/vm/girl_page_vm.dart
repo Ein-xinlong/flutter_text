@@ -21,4 +21,6 @@ class GirlPageVm extends AnBaseViewModel{
     loadState= AnPageState.Success;
     notifyListeners();
   }
+
+
 }

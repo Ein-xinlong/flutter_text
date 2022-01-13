@@ -3,7 +3,7 @@ class ImageBuildView extends StatelessWidget {
   final String url;
   final double radius;
 
-  const ImageBuildView({Key key, this.url, this.radius = 50}) : super(key: key);
+  const ImageBuildView({Key key, this.url, this.radius = 10}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

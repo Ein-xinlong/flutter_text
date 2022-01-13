@@ -1,8 +1,8 @@
 // 第一步：引入相关文件
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:untitled/pageview.dart';
-import 'package:untitled/webview.dart';
+import 'package:untitled/page/pageview.dart';
+import 'package:untitled/page/webview.dart';
 import 'statera_diobox_demopage.dart';
 import 'image.dart';
 
