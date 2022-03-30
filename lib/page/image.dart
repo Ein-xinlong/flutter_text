@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
+import 'package:untitled/page/animation_demo_page.dart';
 import 'package:untitled/page/news_page.dart';
 import 'package:untitled/page/random_number.dart';
 import 'package:untitled/page/router.dart';
+import 'package:untitled/page/threeDpage.dart';
 
 import 'package:untitled/utils/common_body.dart';
 import 'package:untitled/utils/loading.dart';
@@ -17,6 +19,7 @@ import 'package:provider/provider.dart';
 import 'package:untitled/page/wan_android_home.dart';
 
 import '../commitUI/button.dart';
+import 'animation_count.dart';
 import 'driving_book.dart';
 import 'drow_page.dart';
 import 'girl_list_page.dart';
@@ -165,6 +168,18 @@ class _JhPhotoPickerToolState extends State<JhPhotoPickerTool> {
                    SizedBox(height: 10,),
                    Container(child: TextButtonPurple(text: "驾照考试题",onPressed: (){
                      Get.to(DrivingBook());
+                   },),width: double.infinity,),
+                   SizedBox(height: 10,),
+                   Container(child: TextButtonPurple(text: "Animation",onPressed: (){
+                     Get.to(AnimationDemo());
+                   },),width: double.infinity,),
+                   SizedBox(height: 10,),
+                   Container(child: TextButtonPurple(text: "3D旋转",onPressed: (){
+                     Get.to(ThreeDSpin());
+                   },),width: double.infinity,),
+                   SizedBox(height: 10,),
+                   Container(child: TextButtonPurple(text: "计数器动画",onPressed: (){
+                     Get.to(()=>AnimationCount());
                    },),width: double.infinity,),
                  ],
                ),

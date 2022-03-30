@@ -8,5 +8,7 @@ class Routers{
   static const ROUTER_NEWPAGE="flutter://newpage";//新闻
   static const ROUTER_NEWDETAILS="flutter://newdetails";//新闻详情
   static const ROUTER_DRIVINGBOOK="flutter://drivingbook";//驾考宝典
+  static const ROUTER_ANIMATIONDEMO="flutter://AnimationDemo";//动画
+  static const ROUTER_THREEDPAGE="flutter://threeDpage";//旋转
 
 }

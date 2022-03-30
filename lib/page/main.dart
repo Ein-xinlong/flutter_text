@@ -8,10 +8,12 @@ import 'package:untitled/page/news_page.dart';
 import 'package:untitled/page/page_clock.dart';
 import 'package:untitled/page/random_number.dart';
 import 'package:untitled/page/router.dart';
+import 'package:untitled/page/threeDpage.dart';
 
 import 'package:untitled/page/unit_splash.dart';
 import 'package:untitled/page/wan_android_home.dart';
 import 'MainTabs.dart';
+import 'animation_demo_page.dart';
 import 'calendar.dart';
 import 'driving_book.dart';
 import 'drow_page.dart';
@@ -35,6 +37,8 @@ class MyApp extends StatelessWidget {
         Routers.ROUTER_NEWPAGE:(context)=>NewsPage(),
         Routers.ROUTER_NEWDETAILS:(context)=>NewDetails(Result("","","测试","")),
         Routers.ROUTER_DRIVINGBOOK:(context)=>DrivingBook(),
+        Routers.ROUTER_ANIMATIONDEMO:(context)=>AnimationDemo(),
+        Routers.ROUTER_THREEDPAGE:(context)=>ThreeDSpin(),
       },
       home: Scaffold(
         resizeToAvoidBottomPadding:false,
