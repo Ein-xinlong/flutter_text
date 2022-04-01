@@ -63,7 +63,7 @@ class _ThreeDSpinState extends State<ThreeDSpin> with SingleTickerProviderStateM
     // TODO: implement initState
     super.initState();
     _controller =
-    AnimationController(vsync: this, duration: Duration(seconds: 5))
+    AnimationController(vsync: this, duration: Duration(seconds: 5))..repeat(reverse: true)
       ..addListener(() {
         setState(() {});
       });
@@ -71,7 +71,7 @@ class _ThreeDSpinState extends State<ThreeDSpin> with SingleTickerProviderStateM
         .animate(CurvedAnimation(parent: _controller, curve: Interval(.0, .5)));
     _animation1 = Tween(begin: -pi / 2, end: 0.0).animate(
         CurvedAnimation(parent: _controller, curve: Interval(.5, 1.0)));
-    _controller.forward();
+   // _controller.forward();
   }
   @override
   Widget build(BuildContext context) {

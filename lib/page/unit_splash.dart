@@ -21,9 +21,9 @@ class _UnitSplashState extends State<UnitSplash> with TickerProviderStateMixin {
 
   ValueNotifier<bool> _animEnd = ValueNotifier<bool>(false);
 
-  final Duration animTime = const Duration(milliseconds: 1000);
-  final Duration delayTime = const Duration(milliseconds: 500);
-  final Duration fadeInTime = const Duration(milliseconds: 600);
+   Duration animTime;
+    Duration delayTime ;
+   Duration fadeInTime ;
 
    Animation<Offset> logoOffsetAnim;
     Animation<Offset> headOffsetAnim;
@@ -40,7 +40,9 @@ class _UnitSplashState extends State<UnitSplash> with TickerProviderStateMixin {
         statusBarColor: Colors.transparent,
       ),
     );
-
+    animTime= const Duration(milliseconds: 2000);
+    delayTime= const Duration(milliseconds: 500);
+    fadeInTime= const Duration(milliseconds: 600);
     _controller = AnimationController(duration: animTime, vsync: this)
       ..addStatusListener(_listenStatus)
       ..forward();
