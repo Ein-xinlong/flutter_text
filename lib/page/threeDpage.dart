@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:untitled/commitUI/appbar.dart';
 
 class ThreeDSpin extends StatefulWidget {
@@ -9,6 +10,7 @@ class ThreeDSpin extends StatefulWidget {
 }
 
 class _ThreeDSpinState extends State<ThreeDSpin> with SingleTickerProviderStateMixin{
+
   Offset _offset = Offset.zero;
   Widget _child1 = ClipRect(
     child: Align(
@@ -61,6 +63,7 @@ class _ThreeDSpinState extends State<ThreeDSpin> with SingleTickerProviderStateM
 @override
   void initState() {
     // TODO: implement initState
+    timeDilation=5.0;
     super.initState();
     _controller =
     AnimationController(vsync: this, duration: Duration(seconds: 5))..repeat(reverse: true)

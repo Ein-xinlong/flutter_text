@@ -9,12 +9,14 @@ class AnAppbar {
   Function backPressCallback; //为null，则不展示返回
   Widget actionWidget; //右侧action
   Color color;//background颜色
+  bool isShowUnderLine;//background颜色
   AnAppbar(
       {this.titleContent,
         this.titleWidget,
         this.backPressCallback,
         this.actionWidget,
-        this.color
+        this.color,
+        this.isShowUnderLine
       });
 
   AppBar buildAppBar() {
@@ -26,7 +28,7 @@ class AnAppbar {
           child: Container(
             width: double.infinity,
             color: Color(0xFFE8E8E8),
-            height: 1,
+            height: isShowUnderLine==false?0:1,
           ),
         ),
         brightness: Brightness.light,

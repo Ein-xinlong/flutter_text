@@ -8,6 +8,7 @@ import 'package:untitled/page/animation_demo_page.dart';
 import 'package:untitled/page/news_page.dart';
 import 'package:untitled/page/random_number.dart';
 import 'package:untitled/page/router.dart';
+import 'package:untitled/page/snow_page.dart';
 import 'package:untitled/page/threeDpage.dart';
 
 import 'package:untitled/utils/common_body.dart';
@@ -181,6 +182,12 @@ class _JhPhotoPickerToolState extends State<JhPhotoPickerTool> {
                    Container(child: TextButtonPurple(text: "计数器动画",onPressed: (){
                      Get.to(()=>AnimationCount());
                    },),width: double.infinity,),
+
+
+                   SizedBox(height: 10,),
+                   Container(child: TextButtonPurple(text: "雪人",onPressed: (){
+                     Get.to(()=>SnowPage());
+                   },),width: double.infinity,), SizedBox(height: 10,),
                  ],
                ),
              ),
