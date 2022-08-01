@@ -18,7 +18,6 @@ class _NewDetailsState extends State<NewDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomPadding: false,
       appBar: AnAppbar(
           titleContent: widget.result.title,
           backPressCallback: (){

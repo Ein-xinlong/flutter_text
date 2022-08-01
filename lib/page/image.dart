@@ -13,7 +13,7 @@ import 'package:untitled/page/threeDpage.dart';
 
 import 'package:untitled/utils/common_body.dart';
 import 'package:untitled/utils/loading.dart';
-import 'package:untitled/utils/tts.dart';
+//import 'package:untitled/utils/tts.dart';
 import 'package:untitled/commitUI/appbar.dart';
 import 'package:untitled/vm/image_viewmodel.dart';
 import 'package:provider/provider.dart';
@@ -62,7 +62,6 @@ class _JhPhotoPickerToolState extends State<JhPhotoPickerTool> {
 
 
     return Scaffold(
-        resizeToAvoidBottomPadding:false,
       appBar: AnAppbar(
         titleContent: "主页",
         backPressCallback: null
@@ -76,7 +75,7 @@ class _JhPhotoPickerToolState extends State<JhPhotoPickerTool> {
                child: Column(
                  children: [
                    Container(child: TextButtonPurple(text: "语音测试",onPressed: (){
-                     TtsHelper.instance.setLanguageAndSpeak("Hello, welcome to my demo", "en");
+                     //TtsHelper.instance.setLanguageAndSpeak("Hello, welcome to my demo", "en");
                    },),width: double.infinity,),
                    SizedBox(height: 10,),
                    Container(

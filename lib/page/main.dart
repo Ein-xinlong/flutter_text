@@ -26,6 +26,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       title: _title,
       routes: {
         Routers.ROUTER_CALENDAR:(context)=>CalendarPage(),
@@ -41,7 +42,6 @@ class MyApp extends StatelessWidget {
         Routers.ROUTER_THREEDPAGE:(context)=>ThreeDSpin(),
       },
       home: Scaffold(
-        resizeToAvoidBottomPadding:false,
         body: UnitSplash(),
       ),
     );

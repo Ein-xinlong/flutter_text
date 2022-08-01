@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:untitled/commitUI/appbar.dart';
 
 class AnimationDemo extends StatefulWidget {
-
-
   @override
   _AnimationDemoState createState() => _AnimationDemoState();
 }

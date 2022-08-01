@@ -29,8 +29,6 @@ class _TabsState extends State<Tabs> {
   Widget build(BuildContext context) {
     return Container(
       child: Scaffold(
-
-        resizeToAvoidBottomPadding:false,
         // 设置需要显示的内容。
         body: this._pageList[this._currentIndex],
         //创建tabbar
