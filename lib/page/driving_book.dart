@@ -104,6 +104,7 @@ class _DrivingBookState extends State<DrivingBook> {
           ),
           Row(
             crossAxisAlignment: CrossAxisAlignment.baseline,
+            textBaseline:TextBaseline.alphabetic ,
             children: [
               Container(
                 child: Text(
@@ -280,6 +281,7 @@ class _DrivingBookState extends State<DrivingBook> {
           SizedBox(height: 20,),
           Visibility(child: Row(
             crossAxisAlignment: CrossAxisAlignment.baseline,
+            textBaseline: TextBaseline.alphabetic,
             children: [
 
               Expanded(
