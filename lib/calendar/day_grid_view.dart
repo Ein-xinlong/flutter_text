@@ -136,7 +136,6 @@ class _DayGridViewState extends State<DayGridView> {
                 ),
               );
             }else{
-              print("看下执行的哪个方法222");
               /// 在今天之前的时间可以点击
               return GestureDetector(
                 onTap: () {
@@ -161,7 +160,6 @@ class _DayGridViewState extends State<DayGridView> {
             }
           }else{
             /// 在今天之前的时间可以点击
-            print("看下执行的哪个方法111");
             return GestureDetector(
 
               onTap: () {
