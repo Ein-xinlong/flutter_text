@@ -1,9 +1,9 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
+import 'package:untitled/bean/main_list.dart';
+import 'package:untitled/commitUI/banner_two.dart';
 import 'package:untitled/page/animation_demo_page.dart';
 import 'package:untitled/page/news_page.dart';
 import 'package:untitled/page/random_number.dart';
@@ -13,6 +13,7 @@ import 'package:untitled/page/threeDpage.dart';
 
 import 'package:untitled/utils/common_body.dart';
 import 'package:untitled/utils/loading.dart';
+
 //import 'package:untitled/utils/tts.dart';
 import 'package:untitled/commitUI/appbar.dart';
 import 'package:untitled/vm/image_viewmodel.dart';
@@ -25,27 +26,26 @@ import 'driving_book.dart';
 import 'drow_page.dart';
 import 'girl_list_page.dart';
 
-
-
 class JhPhotoPickerTool extends StatefulWidget {
-
   @override
   _JhPhotoPickerToolState createState() => _JhPhotoPickerToolState();
 }
 
 class _JhPhotoPickerToolState extends State<JhPhotoPickerTool> {
-
-  ImageViewModel vm=new ImageViewModel();
-  final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+  ImageViewModel vm = new ImageViewModel();
+  final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+      FlutterLocalNotificationsPlugin();
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    vm.loadingMainList();
     var an = new AndroidInitializationSettings('@mipmap/ic_launcher');
     var io = new IOSInitializationSettings();
     var mac = new MacOSInitializationSettings();
-    final InitializationSettings initializationSettings = InitializationSettings(android: an,iOS: io,macOS: mac);
+    final InitializationSettings initializationSettings =
+        InitializationSettings(android: an, iOS: io, macOS: mac);
     //flutterLocalNotificationsPlugin.initialize(initializationSettings,);
     flutterLocalNotificationsPlugin.initialize(initializationSettings,
         onSelectNotification: selectNotification);
@@ -59,169 +59,248 @@ class _JhPhotoPickerToolState extends State<JhPhotoPickerTool> {
 
   @override
   Widget build(BuildContext context) {
-
-
     return Scaffold(
-      appBar: AnAppbar(
-        titleContent: "主页",
-        backPressCallback: null
-      ).buildAppBar(),
+      backgroundColor:const Color(0xFFF7F7F7),
+      appBar:
+          AnAppbar(titleContent: "主页", backPressCallback: null).buildAppBar(),
       body: ChangeNotifierProvider(
-        child: Consumer<ImageViewModel>(builder: (context,model,child){
-          return AnCommonBody(vm.loadState,bodyWidget:
-         Stack(
-           children: [
-             SingleChildScrollView(
-               child: Column(
-                 children: [
-                   Container(child: TextButtonPurple(text: "语音测试",onPressed: (){
-                     //TtsHelper.instance.setLanguageAndSpeak("Hello, welcome to my demo", "en");
-                   },),width: double.infinity,),
-                   SizedBox(height: 10,),
-                   Container(
-                     decoration: BoxDecoration(
-                       borderRadius: BorderRadius.circular(20),
-                       color:vm.getCorrect? Color(0xFFFFCC99): Color(0xFF99CC99),
-                     ),
-                     child: FlatButton(onPressed: (){
-                       vm.showloadState();
-                       vm.text();
-                       // dialog(context);
-
-                     }, child:Text("get接口测试"),),width: double.infinity,),
-                   SizedBox(height: 10,),
-                   Container(
-                     decoration: BoxDecoration(
-                       borderRadius: BorderRadius.circular(20),
-                       color:vm.postCorrect?Color(0xFFFFCC99):Color(0xFF99CC99),
-                     ),
-                     child: FlatButton(onPressed: (){
-                       vm.showloadState();
-                       vm.postText();
-                       // dialog(context);
-
-                     }, child:Text("post接口测试"),),width: double.infinity,),
-                   SizedBox(height: 10,),
-                   Container(child: TextButtonPurple(text: "日历页面",onPressed: (){
-                     Navigator.pushNamed(context, Routers.ROUTER_CALENDAR);
-                   },),width: double.infinity,),
-                   SizedBox(height: 10,),
-                   Container(child: TextButtonPurple(text: "炫酷时钟",onPressed: (){
-                     Navigator.pushNamed(context, Routers.ROUTER_CLOCK);
-                   },),width: double.infinity,),
-                   SizedBox(height: 10,),
-
-                   Container(child: TextButtonPurple(text: "白板",onPressed: (){
-                     //普通路由跳转
-                     //Navigator.pushNamed(context, Routers.ROUTER_DROWPAGE);
-                     //git跳转
-                     Get.to(() => DrowPage(),fullscreenDialog: true,transition: Transition.size,curve: Curves.ease,duration: Duration(milliseconds: 700));
-                   },),width: double.infinity,),
-                   SizedBox(height: 10,),
-                   Container(child: TextButtonPurple(text: "切换主题",onPressed: (){
-                     Get.bottomSheet(
-                         Container(
-                           child: Wrap(
-                             children: [
-                               ListTile(
-                                 leading: Icon(Icons.wb_sunny_outlined),
-                                 title: Text("白天模式"),
-                                 onTap: () {
-                                   Get.changeTheme(ThemeData.light());
-                                 },
-                               ),
-                               ListTile(
-                                 leading: Icon(Icons.wb_sunny),
-                                 title: Text("黑夜模式"),
-                                 onTap: () {
-                                   Get.changeTheme(ThemeData.dark());
-                                 },
-                               )
-                             ],
-                           ),
-                         ),
-                         backgroundColor: Colors.grey
-                     );
-
-                   },),width: double.infinity,),
-                   SizedBox(height: 10,),
-                   Container(child: TextButtonPurple(text: "玩android",onPressed: (){
-                     Get.to(AndroidHome());
-                   },),width: double.infinity,),
-                   SizedBox(height: 10,),
-
-                   Container(child: TextButtonPurple(text: "通知",onPressed: (){
-                     _showNotification();
-                   },),width: double.infinity,),
-                   SizedBox(height: 10,),
-                   Container(child: TextButtonPurple(text: "随机数",onPressed: (){
-                     Get.to(RandomNumber());
-                   },),width: double.infinity,),
-                   SizedBox(height: 10,),
-                   Container(child: TextButtonPurple(text: "新闻",onPressed: (){
-                     Get.to(NewsPage());
-                   },),width: double.infinity,),
-                   SizedBox(height: 10,),
-                   Container(child: TextButtonPurple(text: "美女",onPressed: (){
-                     Get.to(GirlPage());
-                   },),width: double.infinity,),
-                   SizedBox(height: 10,),
-                   Container(child: TextButtonPurple(text: "驾照考试题",onPressed: (){
-                     Get.to(DrivingBook());
-                   },),width: double.infinity,),
-                   SizedBox(height: 10,),
-                   Container(child: TextButtonPurple(text: "Animation",onPressed: (){
-                     Get.to(AnimationDemo());
-                   },),width: double.infinity,),
-                   SizedBox(height: 10,),
-                   Container(child: TextButtonPurple(text: "3D旋转",onPressed: (){
-                     Get.to(ThreeDSpin());
-                   },),width: double.infinity,),
-                   SizedBox(height: 10,),
-                   Container(child: TextButtonPurple(text: "计数器动画",onPressed: (){
-                     Get.to(()=>AnimationCount());
-                   },),width: double.infinity,),
-
-
-                   SizedBox(height: 10,),
-                   Container(child: TextButtonPurple(text: "雪人",onPressed: (){
-                     Get.to(()=>SnowPage());
-                   },),width: double.infinity,), SizedBox(height: 10,),
-                 ],
-               ),
-             ),
-             Offstage(
-               offstage:vm.isShow ,
-               child: PdaLoadingView(),
-             )
-           ],
-         ),);
-        },),
-        create: (BuildContext context){
+        child: Consumer<ImageViewModel>(
+          builder: (context, model, child) {
+            //  return AnCommonBody(vm.loadState,bodyWidget:
+            // Stack(
+            //   children: [
+            //     SingleChildScrollView(
+            //       child: Column(
+            //         children: [
+            //           Container(child: TextButtonPurple(text: "语音测试",onPressed: (){
+            //             //TtsHelper.instance.setLanguageAndSpeak("Hello, welcome to my demo", "en");
+            //           },),width: double.infinity,),
+            //           SizedBox(height: 10,),
+            //           Container(
+            //             decoration: BoxDecoration(
+            //               borderRadius: BorderRadius.circular(20),
+            //               color:vm.getCorrect? Color(0xFFFFCC99): Color(0xFF99CC99),
+            //             ),
+            //             child: FlatButton(onPressed: (){
+            //               vm.showloadState();
+            //               vm.text();
+            //               // dialog(context);
+            //
+            //             }, child:Text("get接口测试"),),width: double.infinity,),
+            //           SizedBox(height: 10,),
+            //           Container(
+            //             decoration: BoxDecoration(
+            //               borderRadius: BorderRadius.circular(20),
+            //               color:vm.postCorrect?Color(0xFFFFCC99):Color(0xFF99CC99),
+            //             ),
+            //             child: FlatButton(onPressed: (){
+            //               vm.showloadState();
+            //               vm.postText();
+            //               // dialog(context);
+            //
+            //             }, child:Text("post接口测试"),),width: double.infinity,),
+            //           SizedBox(height: 10,),
+            //           Container(child: TextButtonPurple(text: "日历页面",onPressed: (){
+            //             Navigator.pushNamed(context, Routers.ROUTER_CALENDAR);
+            //           },),width: double.infinity,),
+            //           SizedBox(height: 10,),
+            //           Container(child: TextButtonPurple(text: "炫酷时钟",onPressed: (){
+            //             Navigator.pushNamed(context, Routers.ROUTER_CLOCK);
+            //           },),width: double.infinity,),
+            //           SizedBox(height: 10,),
+            //
+            //           Container(child: TextButtonPurple(text: "白板",onPressed: (){
+            //             //普通路由跳转
+            //             //Navigator.pushNamed(context, Routers.ROUTER_DROWPAGE);
+            //             //git跳转
+            //             Get.to(() => DrowPage(),fullscreenDialog: true,transition: Transition.size,curve: Curves.ease,duration: Duration(milliseconds: 700));
+            //           },),width: double.infinity,),
+            //           SizedBox(height: 10,),
+            //           Container(child: TextButtonPurple(text: "切换主题",onPressed: (){
+            //             Get.bottomSheet(
+            //                 Container(
+            //                   child: Wrap(
+            //                     children: [
+            //                       ListTile(
+            //                         leading: Icon(Icons.wb_sunny_outlined),
+            //                         title: Text("白天模式"),
+            //                         onTap: () {
+            //                           Get.changeTheme(ThemeData.light());
+            //                         },
+            //                       ),
+            //                       ListTile(
+            //                         leading: Icon(Icons.wb_sunny),
+            //                         title: Text("黑夜模式"),
+            //                         onTap: () {
+            //                           Get.changeTheme(ThemeData.dark());
+            //                         },
+            //                       )
+            //                     ],
+            //                   ),
+            //                 ),
+            //                 backgroundColor: Colors.grey
+            //             );
+            //
+            //           },),width: double.infinity,),
+            //           SizedBox(height: 10,),
+            //           Container(child: TextButtonPurple(text: "玩android",onPressed: (){
+            //             Get.to(AndroidHome());
+            //           },),width: double.infinity,),
+            //           SizedBox(height: 10,),
+            //
+            //           Container(child: TextButtonPurple(text: "通知",onPressed: (){
+            //             _showNotification();
+            //           },),width: double.infinity,),
+            //           SizedBox(height: 10,),
+            //           Container(child: TextButtonPurple(text: "随机数",onPressed: (){
+            //             Get.to(RandomNumber());
+            //           },),width: double.infinity,),
+            //           SizedBox(height: 10,),
+            //           Container(child: TextButtonPurple(text: "新闻",onPressed: (){
+            //             Get.to(NewsPage());
+            //           },),width: double.infinity,),
+            //           SizedBox(height: 10,),
+            //           Container(child: TextButtonPurple(text: "美女",onPressed: (){
+            //             Get.to(GirlPage());
+            //           },),width: double.infinity,),
+            //           SizedBox(height: 10,),
+            //           Container(child: TextButtonPurple(text: "驾照考试题",onPressed: (){
+            //             Get.to(DrivingBook());
+            //           },),width: double.infinity,),
+            //           SizedBox(height: 10,),
+            //           Container(child: TextButtonPurple(text: "Animation",onPressed: (){
+            //             Get.to(AnimationDemo());
+            //           },),width: double.infinity,),
+            //           SizedBox(height: 10,),
+            //           Container(child: TextButtonPurple(text: "3D旋转",onPressed: (){
+            //             Get.to(ThreeDSpin());
+            //           },),width: double.infinity,),
+            //           SizedBox(height: 10,),
+            //           Container(child: TextButtonPurple(text: "计数器动画",onPressed: (){
+            //             Get.to(()=>AnimationCount());
+            //           },),width: double.infinity,),
+            //
+            //
+            //           SizedBox(height: 10,),
+            //           Container(child: TextButtonPurple(text: "雪人",onPressed: (){
+            //             Get.to(()=>SnowPage());
+            //           },),width: double.infinity,), SizedBox(height: 10,),
+            //         ],
+            //       ),
+            //     ),
+            //     Offstage(
+            //       offstage:vm.isShow ,
+            //       child: PdaLoadingView(),
+            //     )
+            //   ],
+            // ),);
+            return SingleChildScrollView(
+              child: Column(
+                children: [
+                  BannerTest(),
+                  SizedBox(height: 10,),
+                  Container(
+                    child: _mainList(),
+                  )
+                ],
+              ),
+            );
+          },
+        ),
+        create: (BuildContext context) {
           return vm;
         },
       ),
     );
   }
+
+  _mainList() {
+    return ListView.separated(
+      itemCount: vm.list.length,
+      itemBuilder: (context, index) {
+        return _mainListItem(vm.list[index]);
+      },
+      separatorBuilder: (context, index) {
+        return const SizedBox(
+          height: 10,
+        );
+      },
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+    );
+  }
+
+  _mainListItem(MainList mainList) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(15),
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.all(Radius.circular(12)),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(mainList.ListItemString),
+          Wrap(
+            direction: Axis.horizontal,
+            children:_itemList(mainList.item),
+          )
+        ],
+      ),
+    );
+  }
+
+  List<Widget> _itemList(List<ItemList> item){
+    List<Widget> widget=[];
+  var size=  ((MediaQuery.of(context).size.width)-30)/5;
+    for(var a in item){
+    Widget con= Material(
+      color: Colors.transparent,
+      borderRadius: BorderRadius.all(Radius.circular(50)),
+      clipBehavior: Clip.hardEdge,
+      child: InkWell(
+        child: Padding(padding: EdgeInsets.all(5),child:  Container(
+          width:size,
+          height: size,
+          child:Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.error),
+              Text(a.itemName,style: TextStyle(fontSize: 12),),
+            ],
+          ),
+        ),),
+        onTap: (){
+          print(a.marker.toString());
+        },
+      ),
+    );
+      widget.add(con);
+    }
+    return widget;
+  }
+
   Future<void> _showNotification() async {
     var androidPlatformChannelSpecifics = new AndroidNotificationDetails(
         'your channel id', 'your channel name', 'your channel description',
         importance: Importance.max, priority: Priority.high);
     var iOSPlatformChannelSpecifics = new IOSNotificationDetails();
     var mac = new MacOSNotificationDetails();
-    NotificationDetails platformChannelSpecifics = NotificationDetails(android: androidPlatformChannelSpecifics,iOS: iOSPlatformChannelSpecifics,macOS:mac);
-    await flutterLocalNotificationsPlugin.show(0, 'AnDemo', '测试发送通知成功', platformChannelSpecifics,payload: 'item x');
+    NotificationDetails platformChannelSpecifics = NotificationDetails(
+        android: androidPlatformChannelSpecifics,
+        iOS: iOSPlatformChannelSpecifics,
+        macOS: mac);
+    await flutterLocalNotificationsPlugin.show(
+        0, 'AnDemo', '测试发送通知成功', platformChannelSpecifics,
+        payload: 'item x');
   }
+
   Future selectNotification(String payload) async {
     if (payload != null) {
       debugPrint('notification payload: $payload');
     }
-     Get.to(AndroidHome());
+    Get.to(AndroidHome());
   }
-
-
-
-
-
-
 }
