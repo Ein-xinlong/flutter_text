@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled/utils/toash.dart';
 
 class BannerTest extends StatefulWidget {
   @override
@@ -148,7 +149,7 @@ class _BannerViewState extends State<BannerView>
               }
             },
             child: NotificationListener(
-              onNotification: (notification){
+              onNotification:(notification){
                 if(notification is ScrollUpdateNotification) {
                   ScrollUpdateNotification n = notification;
                   /// 判断是否是一次完整的翻页
@@ -170,7 +171,7 @@ class _BannerViewState extends State<BannerView>
                   return InkWell(
                     child: children[index],
                     onTap: () {
-                      print("点击Item");
+                      Toast.toast(context, "第"+index.toString()+"张");
                     },
                   );
                 },
