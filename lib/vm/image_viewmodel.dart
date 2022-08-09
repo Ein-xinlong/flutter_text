@@ -1,9 +1,13 @@
+import 'dart:io';
+import 'dart:typed_data';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:get/get_navigation/src/routes/transitions_type.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:untitled/bean/main_list.dart';
 import 'package:untitled/network/network.dart';
 import 'package:untitled/page/page_animation_count.dart';
@@ -15,17 +19,21 @@ import 'package:untitled/page/page_girl_list.dart';
 import 'package:untitled/page/page_news_page.dart';
 import 'package:untitled/page/page_clock.dart';
 import 'package:untitled/page/page_random_number.dart';
-import 'package:untitled/page/page_threeD.dart';
 import 'package:untitled/page/page_wan_android.dart';
 import 'package:untitled/utils/common_body.dart';
 import 'package:untitled/utils/log.dart';
+import 'package:untitled/utils/toash.dart';
 import 'package:untitled/vm/base_viewmodel.dart';
+import 'dart:async';
 
+import 'package:flutter/cupertino.dart';
+import 'package:qrscan/qrscan.dart' as scanner;
 class ImageViewModel extends AnBaseViewModel {
   bool isShow = true; //loading是否展示   ture为隐藏  false为展示
   bool getCorrect = false; //get请求是否成功
   bool postCorrect = false; //post请求是否成功
   List<MainList> list = [];
+  Uint8List bytes = Uint8List(0);
   final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
   FlutterLocalNotificationsPlugin();
   init(){
@@ -105,10 +113,15 @@ class ImageViewModel extends AnBaseViewModel {
     itemList3.itemName = "通知";
     itemList3.imageUrl = "assets/images/ARK.png";
     itemList3.marker = 3;
+    ItemList itemList14 = ItemList();
+    itemList14.itemName = "扫描二维码";
+    itemList14.imageUrl = "assets/images/DASH.png";
+    itemList14.marker = 14;
     mainList.item.add(itemList);
     mainList.item.add(itemList1);
     mainList.item.add(itemList2);
     mainList.item.add(itemList3);
+    mainList.item.add(itemList14);
 
     MainList mainList1 = MainList();
     mainList1.ListItemString = "新页面集合";
@@ -237,6 +250,7 @@ class ImageViewModel extends AnBaseViewModel {
         Get.to(()=>AnimationCount());
         break;
       case 14:
+        _scan();
         break;
       case 15:
         break;
@@ -263,6 +277,16 @@ class ImageViewModel extends AnBaseViewModel {
       debugPrint('notification payload: $payload');
     }
     Get.to(AndroidHome());
+  }
+
+  Future _scan() async {
+     await Permission.camera.request();
+    String barcode = await scanner.scan();
+    if (barcode == null) {
+      print('nothing return.');
+    } else {
+      Get.defaultDialog(title:"扫描结果", middleText: barcode);
+    }
   }
 
 }
