@@ -60,140 +60,12 @@ class _JhPhotoPickerToolState extends State<JhPhotoPickerTool> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:const Color(0xFFF7F7F7),
+      backgroundColor:const Color(0xFF8CD75),
       appBar:
           AnAppbar(titleContent: "主页", backPressCallback: null).buildAppBar(),
       body: ChangeNotifierProvider(
         child: Consumer<ImageViewModel>(
           builder: (context, model, child) {
-            //  return AnCommonBody(vm.loadState,bodyWidget:
-            // Stack(
-            //   children: [
-            //     SingleChildScrollView(
-            //       child: Column(
-            //         children: [
-            //           Container(child: TextButtonPurple(text: "语音测试",onPressed: (){
-            //             //TtsHelper.instance.setLanguageAndSpeak("Hello, welcome to my demo", "en");
-            //           },),width: double.infinity,),
-            //           SizedBox(height: 10,),
-            //           Container(
-            //             decoration: BoxDecoration(
-            //               borderRadius: BorderRadius.circular(20),
-            //               color:vm.getCorrect? Color(0xFFFFCC99): Color(0xFF99CC99),
-            //             ),
-            //             child: FlatButton(onPressed: (){
-            //               vm.showloadState();
-            //               vm.text();
-            //               // dialog(context);
-            //
-            //             }, child:Text("get接口测试"),),width: double.infinity,),
-            //           SizedBox(height: 10,),
-            //           Container(
-            //             decoration: BoxDecoration(
-            //               borderRadius: BorderRadius.circular(20),
-            //               color:vm.postCorrect?Color(0xFFFFCC99):Color(0xFF99CC99),
-            //             ),
-            //             child: FlatButton(onPressed: (){
-            //               vm.showloadState();
-            //               vm.postText();
-            //               // dialog(context);
-            //
-            //             }, child:Text("post接口测试"),),width: double.infinity,),
-            //           SizedBox(height: 10,),
-            //           Container(child: TextButtonPurple(text: "日历页面",onPressed: (){
-            //             Navigator.pushNamed(context, Routers.ROUTER_CALENDAR);
-            //           },),width: double.infinity,),
-            //           SizedBox(height: 10,),
-            //           Container(child: TextButtonPurple(text: "炫酷时钟",onPressed: (){
-            //             Navigator.pushNamed(context, Routers.ROUTER_CLOCK);
-            //           },),width: double.infinity,),
-            //           SizedBox(height: 10,),
-            //
-            //           Container(child: TextButtonPurple(text: "白板",onPressed: (){
-            //             //普通路由跳转
-            //             //Navigator.pushNamed(context, Routers.ROUTER_DROWPAGE);
-            //             //git跳转
-            //             Get.to(() => DrowPage(),fullscreenDialog: true,transition: Transition.size,curve: Curves.ease,duration: Duration(milliseconds: 700));
-            //           },),width: double.infinity,),
-            //           SizedBox(height: 10,),
-            //           Container(child: TextButtonPurple(text: "切换主题",onPressed: (){
-            //             Get.bottomSheet(
-            //                 Container(
-            //                   child: Wrap(
-            //                     children: [
-            //                       ListTile(
-            //                         leading: Icon(Icons.wb_sunny_outlined),
-            //                         title: Text("白天模式"),
-            //                         onTap: () {
-            //                           Get.changeTheme(ThemeData.light());
-            //                         },
-            //                       ),
-            //                       ListTile(
-            //                         leading: Icon(Icons.wb_sunny),
-            //                         title: Text("黑夜模式"),
-            //                         onTap: () {
-            //                           Get.changeTheme(ThemeData.dark());
-            //                         },
-            //                       )
-            //                     ],
-            //                   ),
-            //                 ),
-            //                 backgroundColor: Colors.grey
-            //             );
-            //
-            //           },),width: double.infinity,),
-            //           SizedBox(height: 10,),
-            //           Container(child: TextButtonPurple(text: "玩android",onPressed: (){
-            //             Get.to(AndroidHome());
-            //           },),width: double.infinity,),
-            //           SizedBox(height: 10,),
-            //
-            //           Container(child: TextButtonPurple(text: "通知",onPressed: (){
-            //             _showNotification();
-            //           },),width: double.infinity,),
-            //           SizedBox(height: 10,),
-            //           Container(child: TextButtonPurple(text: "随机数",onPressed: (){
-            //             Get.to(RandomNumber());
-            //           },),width: double.infinity,),
-            //           SizedBox(height: 10,),
-            //           Container(child: TextButtonPurple(text: "新闻",onPressed: (){
-            //             Get.to(NewsPage());
-            //           },),width: double.infinity,),
-            //           SizedBox(height: 10,),
-            //           Container(child: TextButtonPurple(text: "美女",onPressed: (){
-            //             Get.to(GirlPage());
-            //           },),width: double.infinity,),
-            //           SizedBox(height: 10,),
-            //           Container(child: TextButtonPurple(text: "驾照考试题",onPressed: (){
-            //             Get.to(DrivingBook());
-            //           },),width: double.infinity,),
-            //           SizedBox(height: 10,),
-            //           Container(child: TextButtonPurple(text: "Animation",onPressed: (){
-            //             Get.to(AnimationDemo());
-            //           },),width: double.infinity,),
-            //           SizedBox(height: 10,),
-            //           Container(child: TextButtonPurple(text: "3D旋转",onPressed: (){
-            //             Get.to(ThreeDSpin());
-            //           },),width: double.infinity,),
-            //           SizedBox(height: 10,),
-            //           Container(child: TextButtonPurple(text: "计数器动画",onPressed: (){
-            //             Get.to(()=>AnimationCount());
-            //           },),width: double.infinity,),
-            //
-            //
-            //           SizedBox(height: 10,),
-            //           Container(child: TextButtonPurple(text: "雪人",onPressed: (){
-            //             Get.to(()=>SnowPage());
-            //           },),width: double.infinity,), SizedBox(height: 10,),
-            //         ],
-            //       ),
-            //     ),
-            //     Offstage(
-            //       offstage:vm.isShow ,
-            //       child: PdaLoadingView(),
-            //     )
-            //   ],
-            // ),);
             return SingleChildScrollView(
               child: Column(
                 children: [
@@ -242,9 +114,15 @@ class _JhPhotoPickerToolState extends State<JhPhotoPickerTool> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(mainList.ListItemString),
-          Wrap(
-            direction: Axis.horizontal,
-            children:_itemList(mainList.item),
+          SizedBox(height: 10,),
+          GridView(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 4, //每一行的列数
+            mainAxisSpacing: 10, //主轴方向上的间距
+            crossAxisSpacing: 10, //交叉轴轴方向上的间距
+            childAspectRatio: 1.2, //子元素的宽高比例
+          ),
+              shrinkWrap:true,
+          children:_itemList(mainList.item),
           )
         ],
       ),
@@ -253,7 +131,7 @@ class _JhPhotoPickerToolState extends State<JhPhotoPickerTool> {
 
   List<Widget> _itemList(List<ItemList> item){
     List<Widget> widget=[];
-  var size=  ((MediaQuery.of(context).size.width)-30)/5;
+
     for(var a in item){
     Widget con= Material(
       color: Colors.transparent,
@@ -261,19 +139,22 @@ class _JhPhotoPickerToolState extends State<JhPhotoPickerTool> {
       clipBehavior: Clip.hardEdge,
       child: InkWell(
         child: Padding(padding: EdgeInsets.all(5),child:  Container(
-          width:size,
-          height: size,
           child:Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(Icons.error),
+              SizedBox(
+                height: 28,
+                width: 28,
+                child: Image.asset(a.imageUrl,),
+              ),
+              SizedBox(height: 5,),
               Text(a.itemName,style: TextStyle(fontSize: 12),),
             ],
           ),
         ),),
         onTap: (){
-          print(a.marker.toString());
+          vm.itemClickOn(a.marker);
         },
       ),
     );

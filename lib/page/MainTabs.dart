@@ -29,29 +29,37 @@ class _TabsState extends State<Tabs> {
   Widget build(BuildContext context) {
     return Container(
       child: Scaffold(
+          extendBody: true,
         // 设置需要显示的内容。
         body: this._pageList[this._currentIndex],
         //创建tabbar
-        bottomNavigationBar: BottomNavigationBar(
-          currentIndex: this._currentIndex,
-          //tabbar的点击事件
-          onTap: (int index) {
-            setState(() {
-              this._currentIndex = index;
-            });
-          },
-          //设置图标尺寸
-          iconSize: 20,
-          //设置选中图标的颜色
-          fixedColor: Color(0xFF003333),
-          type:BottomNavigationBarType.fixed,
-          //设置item
-          items: [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: "图片"),
-            BottomNavigationBarItem(icon: Icon(Icons.category), label: "PageView"),
-            BottomNavigationBarItem(icon: Icon(Icons.settings), label: "单选"),
-            BottomNavigationBarItem(icon: Icon(Icons.web), label: "网页"),
-          ],
+        bottomNavigationBar:Container(
+          decoration: const BoxDecoration(
+            color: Color(0xFFbbcdc5),
+            borderRadius: BorderRadius.only(topRight:Radius.circular(20),topLeft: Radius.circular(20)),
+          ),
+          child: BottomNavigationBar(
+            backgroundColor:Colors.transparent,
+            currentIndex: this._currentIndex,
+            //tabbar的点击事件
+            onTap: (int index) {
+              setState(() {
+                this._currentIndex = index;
+              });
+            },
+            //设置图标尺寸
+            iconSize: 20,
+            unselectedItemColor: Colors.white,
+            selectedItemColor: Colors.blue,
+            type:BottomNavigationBarType.fixed,
+            //设置item
+            items: [
+              BottomNavigationBarItem(icon: Icon(Icons.home), label: "工具"),
+              BottomNavigationBarItem(icon: Icon(Icons.category), label: "备用"),
+              BottomNavigationBarItem(icon: Icon(Icons.settings), label: "备用"),
+              BottomNavigationBarItem(icon: Icon(Icons.web), label: "备用"),
+            ],
+          ),
         ),
       ),
     );

@@ -21,22 +21,46 @@ class _BannerTestState extends State<BannerTest> {
                     children: [
                       Image.network(
                           "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic1.zhimg.com%2Fv2-0831ab242b01a6de64757dfd7b0197d1_1440w.jpg%3Fsource%3D172ae18b&refer=http%3A%2F%2Fpic1.zhimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1662553620&t=e9d979a0b8e187cde4d3a337b7ca54ba",
-                          fit: BoxFit.cover),
+                          fit: BoxFit.cover,
+                          errorBuilder: (ctx,err,stackTrace) => Image.asset(
+                              'assets/images/banner_error_.png',//默认显示图片
+                              width: double.infinity)
+                      ),
                       Image.network(
                           "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fs4.51cto.com%2Fimages%2Fblog%2F202012%2F19%2F3ed5de0666bf5c2a48a46998fed79967.png%3Fx-oss-process%3Dimage%2Fwatermark%2Csize_16%2Ctext_QDUxQ1RP5Y2a5a6i%2Ccolor_FFFFFF%2Ct_100%2Cg_se%2Cx_10%2Cy_10%2Cshadow_90%2Ctype_ZmFuZ3poZW5naGVpdGk%3D&refer=http%3A%2F%2Fs4.51cto.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1662553620&t=f5ae56df883db8f6299843b5f6e6ff5f",
-                          fit: BoxFit.cover),
+                          fit: BoxFit.cover,
+                          errorBuilder: (ctx,err,stackTrace) => Image.asset(
+                              'assets/images/banner_error_.png',//默认显示图片
+                              width: double.infinity)
+                      ),
                       Image.network(
                           "https://img1.baidu.com/it/u=1912735056,1677039589&fm=253&fmt=auto&app=138&f=JPG?w=499&h=208",
-                          fit: BoxFit.cover),
+                          fit: BoxFit.cover,
+                          errorBuilder: (ctx,err,stackTrace) => Image.asset(
+                              'assets/images/banner_error_.png',//默认显示图片
+                              width: double.infinity)
+                      ),
                       Image.network(
                           "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2F24baed7da3a60f1206dd28bf636c15691713edfff0fa-xRVbEN_fw658&refer=http%3A%2F%2Fhbimg.b0.upaiyun.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1662553798&t=796677308f5e39718287d58ccb98ba53",
-                          fit: BoxFit.cover),
+                          fit: BoxFit.cover,
+                          errorBuilder: (ctx,err,stackTrace) => Image.asset(
+                              'assets/images/banner_error_.png',//默认显示图片
+                              width: double.infinity)
+                      ),
                       Image.network(
                           "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fs11.51cto.com%2Fimages%2F201812%2F27%2F5a050abb60deeef2121d56bf1b68185a.png&refer=http%3A%2F%2Fs11.51cto.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1662553629&t=4ea3649f7ad7ca0a2d019552e8146856",
-                          fit: BoxFit.cover),
+                          fit: BoxFit.cover,
+                          errorBuilder: (ctx,err,stackTrace) => Image.asset(
+                              'assets/images/banner_error_.png',//默认显示图片
+                              width: double.infinity)
+                      ),
                       Image.network(
                           "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F010b1e58ca2f3aa801219c777cfe68.jpg&refer=http%3A%2F%2Fimg.zcool.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1662553798&t=dbf824142c717e93287df81caaed27e5",
-                          fit: BoxFit.cover),
+                          fit: BoxFit.cover,
+                          errorBuilder: (ctx,err,stackTrace) => Image.asset(
+                              'assets/images/banner_error_.png',//默认显示图片
+                              width: double.infinity)
+                      ),
                     ],
                   ));
             } else {
