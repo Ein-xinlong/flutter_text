@@ -6,17 +6,17 @@ import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:get/get_navigation/src/routes/transitions_type.dart';
 import 'package:untitled/bean/main_list.dart';
 import 'package:untitled/network/network.dart';
-import 'package:untitled/page/animation_count.dart';
-import 'package:untitled/page/animation_demo_page.dart';
-import 'package:untitled/page/calendar.dart';
-import 'package:untitled/page/driving_book.dart';
-import 'package:untitled/page/drow_page.dart';
-import 'package:untitled/page/girl_list_page.dart';
-import 'package:untitled/page/news_page.dart';
+import 'package:untitled/page/page_animation_count.dart';
+import 'package:untitled/page/page_animation_demo.dart';
+import 'package:untitled/page/page_calendar.dart';
+import 'package:untitled/page/page_driving_book.dart';
+import 'package:untitled/page/page_write_drow.dart';
+import 'package:untitled/page/page_girl_list.dart';
+import 'package:untitled/page/page_news_page.dart';
 import 'package:untitled/page/page_clock.dart';
-import 'package:untitled/page/random_number.dart';
-import 'package:untitled/page/threeDpage.dart';
-import 'package:untitled/page/wan_android_home.dart';
+import 'package:untitled/page/page_random_number.dart';
+import 'package:untitled/page/page_threeD.dart';
+import 'package:untitled/page/page_wan_android.dart';
 import 'package:untitled/utils/common_body.dart';
 import 'package:untitled/utils/log.dart';
 import 'package:untitled/vm/base_viewmodel.dart';
@@ -85,7 +85,7 @@ class ImageViewModel extends AnBaseViewModel {
     isShow = false;
     notifyListeners();
   }
-
+  ///加载主页数据
   loadingMainList() {
     MainList mainList = MainList();
     mainList.ListItemString = "小工具集合";

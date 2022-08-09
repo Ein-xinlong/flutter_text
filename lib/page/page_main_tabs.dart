@@ -1,10 +1,10 @@
 // 第一步：引入相关文件
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:untitled/page/pageview.dart';
-import 'package:untitled/page/webview.dart';
-import 'statera_diobox_demopage.dart';
-import 'image.dart';
+import 'package:untitled/page/page_page_view.dart';
+import 'package:untitled/page/page_webview.dart';
+import 'page_select_list.dart';
+import 'page_home.dart';
 
 // 第二步：创建一个有状态的Tabs 组件
 class Tabs extends StatefulWidget {

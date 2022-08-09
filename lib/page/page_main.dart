@@ -3,20 +3,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:untitled/bean/new_page_bean.dart';
-import 'package:untitled/page/new_details.dart';
-import 'package:untitled/page/news_page.dart';
+import 'package:untitled/page/page_news_details.dart';
+import 'package:untitled/page/page_news_page.dart';
 import 'package:untitled/page/page_clock.dart';
-import 'package:untitled/page/random_number.dart';
+import 'package:untitled/page/page_random_number.dart';
 import 'package:untitled/page/router.dart';
-import 'package:untitled/page/threeDpage.dart';
+import 'package:untitled/page/page_threeD.dart';
 
-import 'package:untitled/page/unit_splash.dart';
-import 'package:untitled/page/wan_android_home.dart';
-import 'MainTabs.dart';
-import 'animation_demo_page.dart';
-import 'calendar.dart';
-import 'driving_book.dart';
-import 'drow_page.dart';
+import 'package:untitled/page/page_splash.dart';
+import 'package:untitled/page/page_wan_android.dart';
+import 'page_main_tabs.dart';
+import 'page_animation_demo.dart';
+import 'page_calendar.dart';
+import 'page_driving_book.dart';
+import 'page_write_drow.dart';
 
 void main() => runApp(MyApp());
 

@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:untitled/utils/unit_paint.dart';
 
-import 'MainTabs.dart';
+import 'page_main_tabs.dart';
 import '../commitUI/flutter_unit_text.dart';
 
 

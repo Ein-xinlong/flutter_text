@@ -1,30 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'package:untitled/bean/main_list.dart';
 import 'package:untitled/commitUI/banner_two.dart';
-import 'package:untitled/page/animation_demo_page.dart';
-import 'package:untitled/page/news_page.dart';
-import 'package:untitled/page/random_number.dart';
-import 'package:untitled/page/router.dart';
-import 'package:untitled/page/snow_page.dart';
-import 'package:untitled/page/threeDpage.dart';
-
-import 'package:untitled/utils/common_body.dart';
-import 'package:untitled/utils/loading.dart';
-
-//import 'package:untitled/utils/tts.dart';
 import 'package:untitled/commitUI/appbar.dart';
 import 'package:untitled/vm/image_viewmodel.dart';
 import 'package:provider/provider.dart';
-import 'package:untitled/page/wan_android_home.dart';
-
-import '../commitUI/button.dart';
-import 'animation_count.dart';
-import 'driving_book.dart';
-import 'drow_page.dart';
-import 'girl_list_page.dart';
+import 'package:untitled/page/page_wan_android.dart';
 
 class JhPhotoPickerTool extends StatefulWidget {
   @override
@@ -41,22 +23,7 @@ class _JhPhotoPickerToolState extends State<JhPhotoPickerTool> {
     // TODO: implement initState
     super.initState();
     vm.loadingMainList();
-    var an = new AndroidInitializationSettings('@mipmap/ic_launcher');
-    var io = new IOSInitializationSettings();
-    var mac = new MacOSInitializationSettings();
-    final InitializationSettings initializationSettings =
-        InitializationSettings(android: an, iOS: io, macOS: mac);
-    //flutterLocalNotificationsPlugin.initialize(initializationSettings,);
-    flutterLocalNotificationsPlugin.initialize(initializationSettings,
-        onSelectNotification: selectNotification);
   }
-
-  @override
-  void setState(fn) {
-    // TODO: implement setState
-    super.setState(fn);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -161,27 +128,5 @@ class _JhPhotoPickerToolState extends State<JhPhotoPickerTool> {
       widget.add(con);
     }
     return widget;
-  }
-
-  Future<void> _showNotification() async {
-    var androidPlatformChannelSpecifics = new AndroidNotificationDetails(
-        'your channel id', 'your channel name', 'your channel description',
-        importance: Importance.max, priority: Priority.high);
-    var iOSPlatformChannelSpecifics = new IOSNotificationDetails();
-    var mac = new MacOSNotificationDetails();
-    NotificationDetails platformChannelSpecifics = NotificationDetails(
-        android: androidPlatformChannelSpecifics,
-        iOS: iOSPlatformChannelSpecifics,
-        macOS: mac);
-    await flutterLocalNotificationsPlugin.show(
-        0, 'AnDemo', '测试发送通知成功', platformChannelSpecifics,
-        payload: 'item x');
-  }
-
-  Future selectNotification(String payload) async {
-    if (payload != null) {
-      debugPrint('notification payload: $payload');
-    }
-    Get.to(AndroidHome());
   }
 }
