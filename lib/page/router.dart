@@ -10,5 +10,6 @@ class Routers{
   static const ROUTER_DRIVINGBOOK="flutter://drivingbook";//驾考宝典
   static const ROUTER_ANIMATIONDEMO="flutter://AnimationDemo";//动画
   static const ROUTER_THREEDPAGE="flutter://threeDpage";//旋转
+  static const ROUTER_LOGINPAGE="flutter://login";//旋转
 
 }

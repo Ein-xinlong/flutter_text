@@ -138,6 +138,7 @@ class _BannerViewState extends State<BannerView>
   @override
   Widget build(BuildContext context) {
     return Stack(
+      alignment: Alignment.center,
       children: [
         Listener(
           /// 点击时取消timer效果
@@ -198,7 +199,6 @@ class _BannerViewState extends State<BannerView>
             selectedColor: Colors.grey,
           ),
           bottom: 8.0,
-          right: 8.0,
         ),
       ],
     );

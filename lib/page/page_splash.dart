@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
+import 'package:untitled/page/page_login.dart';
+import 'package:untitled/utils/log.dart';
+import 'package:untitled/utils/log_utils.dart';
+import 'package:untitled/utils/sputils.dart';
 import 'package:untitled/utils/unit_paint.dart';
 
 import 'page_main_tabs.dart';
@@ -34,7 +38,7 @@ class _UnitSplashState extends State<UnitSplash> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-
+    SpUtils.init();
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
@@ -76,7 +80,7 @@ class _UnitSplashState extends State<UnitSplash> with TickerProviderStateMixin {
   void _listenStatus(AnimationStatus status) {
     if (status == AnimationStatus.completed) {
       Future.delayed(delayTime).then((e) {
-          Get.offAll(Tabs());
+        SpUtils.getBool("isLogin")?Get.offAll(Tabs()):Get.offAll(LoginPage(title: "登陆",));
       });
     }
   }

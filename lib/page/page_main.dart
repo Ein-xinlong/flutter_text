@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:untitled/bean/new_page_bean.dart';
+import 'package:untitled/page/page_login.dart';
 import 'package:untitled/page/page_news_details.dart';
 import 'package:untitled/page/page_news_page.dart';
 import 'package:untitled/page/page_clock.dart';
@@ -40,6 +41,7 @@ class MyApp extends StatelessWidget {
         Routers.ROUTER_DRIVINGBOOK:(context)=>DrivingBook(),
         Routers.ROUTER_ANIMATIONDEMO:(context)=>AnimationDemo(),
         Routers.ROUTER_THREEDPAGE:(context)=>ThreeDSpin(),
+        Routers.ROUTER_LOGINPAGE:(context)=>LoginPage(title: "登录"),
       },
       home: Scaffold(
         body: UnitSplash(),
