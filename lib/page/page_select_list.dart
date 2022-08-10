@@ -8,7 +8,7 @@ class StateRadioBoxDemoPage extends StatefulWidget {
 }
 
 class _StateRadioBoxDemoPageState extends State<StateRadioBoxDemoPage> {
-  List<RadioModel> sampleData = new List<RadioModel>();
+  List<RadioModel> sampleData =[];
 
   @override
   void initState() {
@@ -23,7 +23,7 @@ class _StateRadioBoxDemoPageState extends State<StateRadioBoxDemoPage> {
     return new Scaffold(
       appBar: AnAppbar(
           titleContent: "单选列表",
-          backPressCallback: null
+          backPressCallback: (){}
       ).buildAppBar(),
       body: new ListView.builder(
         itemCount: sampleData.length,

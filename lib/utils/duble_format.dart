@@ -7,7 +7,7 @@ String planTotalAmt(double number, int index) {
     return "--";
   }
   //小数点的处理
-  double num = (NumUtil.getNumByValueDouble(number, index));
+  double num = (NumUtil.getNumByValueDouble(number, index))!.toDouble();
   String endString = num.toStringAsFixed(index).substring(
       num.toString().lastIndexOf("."), num
       .toString()
@@ -23,13 +23,13 @@ String planTotalAmt(double number, int index) {
 ///转换为2021.10.01(五)-2021.10.25(一)
 String formatDate(DateTime date){
   var formatter = DateFormat('yyyy.MM.dd HH:mm:ss');
-  String week= weekDay(date.weekday);
+  String week= weekDay(date.weekday)!;
   String dateStr = formatter.format(date)+week;
 
   return dateStr;
 }
 
-String weekDay(int number){
+String? weekDay(int number){
   switch (number){
     case 1:
       return "(一)";

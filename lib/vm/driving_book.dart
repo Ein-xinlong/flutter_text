@@ -13,8 +13,8 @@ class DrivingBookVm extends AnBaseViewModel{
     Dio post = Dio()
       ..options = BaseOptions(
           baseUrl: "https://api.apishop.net/common",
-          connectTimeout: 10000,
-          receiveTimeout: 1000 * 60 * 60 * 24,
+          connectTimeout: Duration(minutes: 10),
+          receiveTimeout: Duration(days: 1),
           responseType: ResponseType.json,
           headers: {"Content-Type": "application/json; charset=utf-8"});
     FormData formData = FormData.fromMap({
@@ -27,15 +27,15 @@ class DrivingBookVm extends AnBaseViewModel{
     var result= await post.post("/driverLicense/queryQuestionList",data: formData);
     print(result.data);
    var aa= json.decode(result.data);
-   Map map= new Map<String, dynamic>.from(aa);
-
+   //Map map= new Map<String, dynamic>.from(aa);
+    Map<String, dynamic> map = Map<String, dynamic>.from(aa);
     DrivingBookBean bean= DrivingBookBean.fromJson(map);
-    list.addAll(bean.result.driverQuestionList);
+    list.addAll(bean.result!.driverQuestionList!);
     loadState=AnPageState.Success;
     notifyListeners();
 
   }
-  String getTitle(String questionType){
+  String? getTitle(String questionType){
     switch(questionType){
       case "1":
         return "判断 ";

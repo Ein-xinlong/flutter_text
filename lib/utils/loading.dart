@@ -4,16 +4,16 @@ import 'package:flutter/widgets.dart';
 import 'loading_dialog.dart';
 
 class AnLoading {
-  static OverlayEntry gloableLoadingEntry;
+  static OverlayEntry? gloableLoadingEntry;
 
   static show(
-      {@required BuildContext context,
+      {required BuildContext context,
       Color backgroundColor = Colors.transparent,
       double top = 0.0}) {
     var paddingTop = top + MediaQuery.of(context).padding.top;
 
     if (gloableLoadingEntry != null) {
-      gloableLoadingEntry.remove();
+      gloableLoadingEntry!.remove();
     }
     gloableLoadingEntry = OverlayEntry(builder: (context) {
       print(MediaQuery.of(context).size.height);
@@ -31,12 +31,12 @@ class AnLoading {
             ),
           ));
     });
-    Overlay.of(context).insert(gloableLoadingEntry);
+    Overlay.of(context).insert(gloableLoadingEntry!);
   }
 
   static dismiss() {
     if (gloableLoadingEntry != null) {
-      gloableLoadingEntry.remove();
+      gloableLoadingEntry!.remove();
       gloableLoadingEntry = null;
     }
   }
@@ -47,7 +47,7 @@ class AnLoading {
 }
 
 class PdaLoadingView extends StatelessWidget {
-  const PdaLoadingView({Key key}) : super(key: key);
+  const PdaLoadingView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

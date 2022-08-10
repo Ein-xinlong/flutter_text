@@ -1,19 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 
 
 class AnAppbar {
-  String titleContent; //appbar只有文字，存在这个则titleWidget不生效
-  Widget titleWidget; //中间位置widget
+  String? titleContent; //appbar只有文字，存在这个则titleWidget不生效
+  Widget? titleWidget; //中间位置widget
   Function backPressCallback; //为null，则不展示返回
-  Widget actionWidget; //右侧action
-  Color color;//background颜色
-  bool isShowUnderLine;//background颜色
+  Widget? actionWidget; //右侧action
+  Color? color;//background颜色
+  bool? isShowUnderLine;//background颜色
   AnAppbar(
       {this.titleContent,
         this.titleWidget,
-        this.backPressCallback,
+        required this.backPressCallback,
         this.actionWidget,
         this.color,
         this.isShowUnderLine
@@ -31,16 +32,15 @@ class AnAppbar {
             height: isShowUnderLine==false?0:1,
           ),
         ),
-        brightness: Brightness.light,
         centerTitle: true,
         title: titleContent == null
             ? titleWidget == null
             ? Container()
             : titleWidget
-            : createText(titleContent, 20, Colors.black,
+            : createText(titleContent!, 20, Colors.black,
             fontWeight: FontWeight.bold),
         actions: <Widget>[
-          actionWidget == null ? Container() : actionWidget,
+          actionWidget == null ? Container() : actionWidget!,
         ],
         leading: Visibility(
           visible: backPressCallback != null,
@@ -53,8 +53,8 @@ class AnAppbar {
               ),
               splashColor: Colors.transparent,
               highlightColor: Colors.transparent,
-              onPressed: backPressCallback),
-        ));
+              onPressed: backPressCallback != null ? () => backPressCallback() : null,),
+        ), systemOverlayStyle: SystemUiOverlayStyle.dark);
   }
 }
 

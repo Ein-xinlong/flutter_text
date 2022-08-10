@@ -6,13 +6,11 @@ part of 'an_base.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-AnResponse _$AnResponseFromJson(Map<String, dynamic> json) {
-  return AnResponse()
-    ..errorCode = json['errorCode'] as int
-    ..errorMsg = json['errorMsg'] as String
-    ..errorDesc = json['errorDesc'] as String
-    ..responseId = json['responseId'] as String;
-}
+AnResponse _$AnResponseFromJson(Map<String, dynamic> json) => AnResponse()
+  ..errorCode = json['errorCode'] as int
+  ..errorMsg = json['errorMsg'] as String
+  ..errorDesc = json['errorDesc'] as String
+  ..responseId = json['responseId'] as String;
 
 Map<String, dynamic> _$AnResponseToJson(AnResponse instance) =>
     <String, dynamic>{

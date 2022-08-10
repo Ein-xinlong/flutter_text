@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class LoadingDialog extends Dialog {
   String text;
 
-  LoadingDialog({Key key, @required this.text}) : super(key: key);
+  LoadingDialog({Key? key, required this.text}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

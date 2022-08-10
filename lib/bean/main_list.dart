@@ -1,10 +1,10 @@
 class MainList {
-  String ListItemString;
-  List<ItemList> item=[];
+  String? ListItemString;
+  List<ItemList>? item=[];
 }
 
 class ItemList{
-  int marker;
-  String imageUrl;
-  String itemName;
+  int? marker;
+  String? imageUrl;
+  String? itemName;
 }

@@ -6,8 +6,8 @@ class SnackUtils{
   /// 吐司弹出SnackBar
   static toast(BuildContext context, String msg,
       {duration = const Duration(milliseconds: 600),
-        Color color, SnackBarAction action}) {
-    Scaffold.of(context).showSnackBar(SnackBar(
+        Color? color, SnackBarAction? action}) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text(msg),
       duration: duration,
       action: action,

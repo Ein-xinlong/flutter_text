@@ -10,7 +10,7 @@ class pageview extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<pageview> {
-  List<Map> list = new List();
+  List<Map> list = [];
   @override
   void initState() {
     // TODO: implement initState
@@ -28,7 +28,7 @@ class _MyHomePageState extends State<pageview> {
     return Scaffold(
       appBar: AnAppbar(
           titleContent: "PageView",
-          backPressCallback: null
+          backPressCallback: (){}
       ).buildAppBar(),
       body: PageView(
         scrollDirection: Axis.vertical,

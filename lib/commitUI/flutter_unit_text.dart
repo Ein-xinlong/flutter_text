@@ -10,7 +10,7 @@ class FlutterUnitText extends StatefulWidget {
   FlutterUnitText({
     this.text = "Toly",
     this.color = Colors.blue,
-    Key  key,
+    Key?  key,
   }) : super(key: key);
 
   @override
@@ -20,12 +20,12 @@ class FlutterUnitText extends StatefulWidget {
 class _FlutterUnitTextState extends State<FlutterUnitText>
     with SingleTickerProviderStateMixin {
 
-    AnimationController _ctrl;
+    AnimationController? _ctrl;
 
   final TextPainter _textPainter =
       TextPainter(textDirection: TextDirection.ltr);
 
-   Animation<double> animation;
+   Animation<double>? animation;
 
   @override
   void initState() {
@@ -37,20 +37,20 @@ class _FlutterUnitTextState extends State<FlutterUnitText>
 
     _ctrl = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 800));
-    animation = CurvedAnimation(parent: _ctrl, curve: const Interpolator());
-    _ctrl.forward();
+    animation = CurvedAnimation(parent: _ctrl!, curve: const Interpolator());
+    _ctrl!.forward();
   }
 
   @override
   void dispose() {
-    _ctrl.dispose();
+    _ctrl!.dispose();
     super.dispose();
   }
 
   @override
   void didUpdateWidget(FlutterUnitText oldWidget) {
     super.didUpdateWidget(oldWidget);
-    _ctrl.forward();
+    _ctrl!.forward();
   }
 
   String msg = '';
@@ -62,7 +62,7 @@ class _FlutterUnitTextState extends State<FlutterUnitText>
         painter: SpringPainter(
           textPainter: _textPainter,
           color: widget.color,
-          skew: animation,
+          skew: animation!,
         ));
   }
 }
@@ -78,15 +78,15 @@ class Interpolator extends Curve {
 }
 
 class SpringPainter extends CustomPainter {
-  final ValueListenable<double> skew;
-  final TextPainter textPainter;
+  final ValueListenable<double>? skew;
+  final TextPainter? textPainter;
   String _text = '';
   Color color;
 
   SpringPainter(
       { this.skew, this.textPainter, this.color = Colors.blue})
       : super(repaint: skew) {
-    _text = textPainter.text?.toPlainText() ?? '';
+    _text = textPainter!.text?.toPlainText() ?? '';
   }
 
   @override
@@ -94,21 +94,21 @@ class SpringPainter extends CustomPainter {
     canvas.translate(size.width / 2, size.height / 2);
     TextSpan text =
         TextSpan(text: _text, style: TextStyle(fontSize: 40, color: color));
-    textPainter.text = text;
-    textPainter.layout(); // 进行布局
-    Size textSize = textPainter.size; // 尺寸必须在布局后获取
+    textPainter!.text = text;
+    textPainter!.layout(); // 进行布局
+    Size textSize = textPainter!.size; // 尺寸必须在布局后获取
 
     canvas.save();
     canvas.translate(-textSize.width / 2, -textSize.height / 2);
-    textPainter.paint(canvas, Offset.zero);
+    textPainter!.paint(canvas, Offset.zero);
     TextSpan textShadow = TextSpan(
         text: _text,
         style: TextStyle(fontSize: 40, color: color.withAlpha(88)));
-    textPainter.text = textShadow;
-    textPainter.layout(); // 进行布局
-    Matrix4 matrix4 = Matrix4.skewX((6 / 180 * pi) * skew.value);
+    textPainter!.text = textShadow;
+    textPainter!.layout(); // 进行布局
+    Matrix4 matrix4 = Matrix4.skewX((6 / 180 * pi) * skew!.value);
     canvas.transform(matrix4.storage);
-    textPainter.paint(canvas, Offset.zero);
+    textPainter!.paint(canvas, Offset.zero);
     canvas.restore();
   }
 

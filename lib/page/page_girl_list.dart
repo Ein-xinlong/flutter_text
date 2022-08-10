@@ -66,7 +66,7 @@ class _GirlPageState extends State<GirlPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            ImageBuildView(url: result.img,),
+            ImageBuildView(url: result.img!,),
             Text(result.time.toString()),
           ],
         ),

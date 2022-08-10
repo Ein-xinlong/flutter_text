@@ -10,7 +10,7 @@ class SnowPage extends StatefulWidget {
 
 class _SnowPageState extends State<SnowPage>
     with SingleTickerProviderStateMixin {
-  AnimationController _container;
+  AnimationController? _container;
   List<Snowflake> _list = List.generate(1000, (index) => Snowflake());
 
   @override
@@ -26,7 +26,7 @@ class _SnowPageState extends State<SnowPage>
 
   @override
   void dispose() {
-    _container.dispose();
+    _container!.dispose();
     // TODO: implement dispose
     super.dispose();
   }
@@ -58,7 +58,7 @@ class _SnowPageState extends State<SnowPage>
             return CustomPaint(
               painter: MyParinter(_list),
             );
-          }, animation: _container,),
+          }, animation: _container!,),
         ),
       ),
     );

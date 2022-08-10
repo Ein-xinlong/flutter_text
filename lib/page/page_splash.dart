@@ -21,19 +21,19 @@ class UnitSplash extends StatefulWidget {
 }
 
 class _UnitSplashState extends State<UnitSplash> with TickerProviderStateMixin {
-    AnimationController _controller;
+    AnimationController? _controller;
 
   ValueNotifier<bool> _animEnd = ValueNotifier<bool>(false);
 
-   Duration animTime;
-    Duration delayTime ;
-   Duration fadeInTime ;
+   late Duration animTime;
+    late Duration delayTime ;
+    late Duration fadeInTime ;
 
-   Animation<Offset> logoOffsetAnim;
-    Animation<Offset> headOffsetAnim;
-    Animation<double> logoScaleAnim;
+    late Animation<Offset> logoOffsetAnim;
+    late Animation<Offset> headOffsetAnim;
+    late Animation<double> logoScaleAnim;
 
-    UnitPainter unitPainter;
+    late UnitPainter unitPainter;
 
   @override
   void initState() {
@@ -50,7 +50,7 @@ class _UnitSplashState extends State<UnitSplash> with TickerProviderStateMixin {
     _controller = AnimationController(duration: animTime, vsync: this)
       ..addStatusListener(_listenStatus)
       ..forward();
-    unitPainter= UnitPainter(repaint: _controller);
+    unitPainter= UnitPainter(repaint: _controller!);
     initAnimation();
 
     Future.delayed(delayTime).then((e) => _animEnd.value = true);
@@ -60,19 +60,19 @@ class _UnitSplashState extends State<UnitSplash> with TickerProviderStateMixin {
     logoOffsetAnim = Tween<Offset>(
       begin: const Offset(0, 0),
       end: const Offset(0, -1.5),
-    ).animate(_controller);
+    ).animate(_controller!);
 
     headOffsetAnim = Tween<Offset>(
       end: const Offset(0, 0),
       begin: const Offset(0, -5),
-    ).animate(_controller);
+    ).animate(_controller!);
 
-    logoScaleAnim = Tween(begin: 2.0, end: 1.0).animate(_controller);
+    logoScaleAnim = Tween(begin: 2.0, end: 1.0).animate(_controller!);
   }
 
   @override
   void dispose() {
-    _controller.dispose();
+    _controller!.dispose();
     _animEnd.dispose();
     super.dispose();
   }
@@ -113,8 +113,7 @@ class _UnitSplashState extends State<UnitSplash> with TickerProviderStateMixin {
           color: Theme.of(context).primaryColor,
         ),
         valueListenable: _animEnd,
-        builder: (_, bool value, Widget  child) => value
-            ? child  : const SizedBox(),
+        builder: (_, bool value, Widget?  child) => value ? child!  : const SizedBox(),
       ),
     );
   }
@@ -123,11 +122,11 @@ class _UnitSplashState extends State<UnitSplash> with TickerProviderStateMixin {
     return SlideTransition(
       position: logoOffsetAnim,
       child: RotationTransition(
-          turns: _controller,
+          turns: _controller!,
           child: ScaleTransition(
             scale: logoScaleAnim,
             child: FadeTransition(
-                opacity: _controller,
+                opacity: _controller!,
                 child: SizedBox(
                   height: 120,
                   child: const FlutterLogo(

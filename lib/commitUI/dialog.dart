@@ -5,8 +5,8 @@ import 'button.dart';
 
 ///1. 只有内容时，title传content
 ///2. 只需要一个按钮时，根据样式，选择只传 btnNegative or btnPositive
-Future<bool> showCommonDialog(BuildContext contextFrom,
-    {String title, String content, String btnNegative, String btnPositive, Function positiveCallback, Function negativeCallback}) {
+Future showCommonDialog(BuildContext contextFrom,
+    {String? title, String? content, String? btnNegative, String? btnPositive, Function? positiveCallback, Function? negativeCallback}) {
   return Navigator.of(contextFrom).push(
     PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) {
@@ -53,7 +53,7 @@ Future<bool> showCommonDialog(BuildContext contextFrom,
                   Container(height: 1, color: Colors.black12),
                   Row(
                     mainAxisSize: MainAxisSize.max,
-                    children: _getButtons(context, btnNegative, btnPositive, positiveCallback , negativeCallback),
+                    children: _getButtons(context, btnNegative!, btnPositive!, positiveCallback! , negativeCallback!),
                   )
                 ],
               ),

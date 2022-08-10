@@ -26,19 +26,19 @@ class BannerWidget extends StatefulWidget {
   Color textBackgroundColor;
   bool isHorizontal;
 
-  OnBannerItemClick bannerPress;
-  CustomBuild build;
+  OnBannerItemClick? bannerPress;
+  CustomBuild? build;
 
   BannerWidget(double this.height, List<BannerItem> this.datas,
-      {Key key,
+      {Key? key,
         int this.duration = 5000,
         double this.pointRadius = 3.0,
         Color this.selectedColor = Colors.red,
         Color this.unSelectedColor = Colors.white,
         Color this.textBackgroundColor = const Color(0x99000000),
         bool this.isHorizontal = true,
-        OnBannerItemClick this.bannerPress,
-        CustomBuild this.build})
+        OnBannerItemClick? this.bannerPress,
+        CustomBuild? this.build})
       : super(key: key);
 
   @override
@@ -48,9 +48,9 @@ class BannerWidget extends StatefulWidget {
 }
 
 class BannerState extends State<BannerWidget> {
-  Timer timer;
+  late Timer? timer;
   int selectedIndex = 0;
-  PageController controller;
+  late PageController controller;
 
   @override
   void initState() {
@@ -75,7 +75,7 @@ class BannerState extends State<BannerWidget> {
     stop();
     timer = Timer.periodic(Duration(milliseconds: widget.duration), (timer) {
       if(widget.datas.length > 0 && controller != null && controller.page != null) {
-        controller.animateToPage(controller.page.toInt() + 1,
+        controller.animateToPage(controller.page!.toInt() + 1,
             duration: Duration(milliseconds: 300), curve: Curves.linear);
       }
     });
@@ -124,7 +124,7 @@ class BannerState extends State<BannerWidget> {
         return InkWell(
             onTap: () {
               if (widget.bannerPress != null)
-                widget.bannerPress(selectedIndex, widget.datas[selectedIndex]);
+                widget.bannerPress!(selectedIndex, widget.datas[selectedIndex]);
             },
             child: widget.build == null
                 ? FadeInImage.memoryNetwork(
@@ -132,7 +132,7 @@ class BannerState extends State<BannerWidget> {
                 image:
                 widget.datas[index % widget.datas.length].itemImagePath,
                 fit: BoxFit.cover)
-                : widget.build(
+                : widget.build!(
                 index, widget.datas[index % widget.datas.length]));
       },
     );
@@ -202,8 +202,8 @@ class BannerState extends State<BannerWidget> {
 }
 
 class BannerItem {
-  String itemImagePath;
-  Widget itemText;
+  late String itemImagePath;
+  late Widget itemText;
 
   static BannerItem defaultBannerItem(String image, String text) {
     BannerItem item = new BannerItem();

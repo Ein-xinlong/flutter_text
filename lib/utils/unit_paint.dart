@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 /// 说明: app 闪屏页画板
 
 class UnitPainter extends CustomPainter {
-    Paint _paint;
+   Paint? _paint;
   final double width;
-   Animation<double> _curveAnim;
+   Animation<double>? _curveAnim;
   final Color color;
 
   final Path _path1 = Path();
@@ -15,14 +15,14 @@ class UnitPainter extends CustomPainter {
   final Path _path3 = Path();
   final Path _path4 = Path();
 
-  UnitPainter(
-      {this.width = 200.0,
-      this.color = Colors.blue,
-       Animation repaint})
-      : super(repaint: repaint) {
-    _paint = Paint();
-    _curveAnim = CurvedAnimation(parent: repaint, curve: Curves.fastOutSlowIn);
-  }
+   UnitPainter({
+     this.width = 200.0,
+     this.color = Colors.blue,
+    required Animation<double> repaint,  // 修改参数类型声明为 Animation<double>?
+   }) : super(repaint: repaint) {
+     _paint = Paint();
+     _curveAnim = CurvedAnimation(parent: repaint, curve: Curves.fastOutSlowIn);
+   }
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -30,7 +30,7 @@ class UnitPainter extends CustomPainter {
     _path2.reset();
     _path3.reset();
     _path4.reset();
-    var factor = _curveAnim.value;
+    var factor = _curveAnim!.value;
     canvas.translate(
         size.width / 2 - width * 0.5, size.height / 2 - width * 0.5);
 
@@ -68,41 +68,41 @@ class UnitPainter extends CustomPainter {
   }
 
   void drawColor1(Canvas canvas) {
-    double factor = _curveAnim.value;
+    double factor = _curveAnim!.value;
     _path1.moveTo(0, 0);
     _path1.lineTo(width * 0.618 * factor - 1, 0);
     _path1.lineTo(width * 0.5 - 1, width * 0.5 - 1);
     _path1.lineTo(0, width * (1 - 0.618) * factor - 1);
 
-    canvas.drawPath(_clipAngle(_path1), _paint..color = Colors.red);
+    canvas.drawPath(_clipAngle(_path1), _paint!..color = Colors.red);
   }
 
   void drawColor2(Canvas canvas) {
-    double factor = _curveAnim.value;
+    double factor = _curveAnim!.value;
     _path2.moveTo(width * 0.618 * factor, 0);
     _path2.lineTo(width, 0);
     _path2.lineTo(width, width * 0.618 * factor);
     _path2.lineTo(width * 0.5, width * 0.5);
 
-    canvas.drawPath(_clipAngle(_path2), _paint..color = Colors.blue);
+    canvas.drawPath(_clipAngle(_path2), _paint!..color = Colors.blue);
   }
 
   void drawColor3(Canvas canvas) {
-    double factor = _curveAnim.value;
+    double factor = _curveAnim!.value;
     _path3.moveTo(width * 0.5 + 1, width * 0.5 + 1);
     _path3.lineTo(width, width * 0.618 * factor + 1);
     _path3.lineTo(width, width);
     _path3.lineTo(width * (1 - 0.618) * factor + 1, width);
-    canvas.drawPath(_clipAngle(_path3), _paint..color = Colors.green);
+    canvas.drawPath(_clipAngle(_path3), _paint!..color = Colors.green);
   }
 
   void drawColor4(Canvas canvas) {
-    double factor = _curveAnim.value;
+    double factor = _curveAnim!.value;
     _path4.moveTo(0, width * (1 - 0.618) * factor);
     _path4.lineTo(width * 0.5, width * 0.5);
     _path4.lineTo(width * (1 - 0.618) * factor, width);
     _path4.lineTo(0, width);
-    canvas.drawPath(_clipAngle(_path4), _paint..color = Colors.yellow);
+    canvas.drawPath(_clipAngle(_path4), _paint!..color = Colors.yellow);
   }
 
   Path _clipAngle(Path path) {

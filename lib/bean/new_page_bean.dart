@@ -7,11 +7,11 @@ part 'new_page_bean.g.dart';
 @JsonSerializable()
 class NewPageBean extends AnResponse {
 
-  int code;
+  int? code;
 
-  String message;
+  String? message;
 
-  List<Result> result;
+  List<Result>? result;
 
   NewPageBean();
 
@@ -25,13 +25,13 @@ class NewPageBean extends AnResponse {
 @JsonSerializable()
 class Result {
 
-  String path;
+  String? path;
 
-  String image;
+  String? image;
 
-  String title;
+  String? title;
 
-  String passtime;
+  String? passtime;
 
   Result(this.path,this.image,this.title,this.passtime,);
 

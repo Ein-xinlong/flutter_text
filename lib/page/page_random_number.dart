@@ -16,8 +16,8 @@ class RandomNumber extends StatefulWidget {
 
 class _RandomNumberState extends State<RandomNumber> {
 
-  String code;
-  String textString;
+  String? code;
+  String? textString;
   @override
   void initState() {
     super.initState();
@@ -70,7 +70,7 @@ class _RandomNumberState extends State<RandomNumber> {
                           )
                       ),
                       child:CustomVertificationCode(
-                        code: code,
+                        code: code!,
                       )
                   ),
                   onTap:(){
@@ -96,8 +96,8 @@ class _RandomNumberState extends State<RandomNumber> {
     }
   }
   // 调用随机数方法
-  _getCode(){
-    code = '';
+  _getCode() {
+    String code = ''; // 添加这行来指定非空类型
     String alphabet = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM';
     for (var i = 0; i < 4; i++) {
       String charOrNum = Random().nextInt(2) % 2 == 0 ? "char" : "num";
@@ -112,4 +112,5 @@ class _RandomNumberState extends State<RandomNumber> {
       setState(() {});
     }
   }
+
 }

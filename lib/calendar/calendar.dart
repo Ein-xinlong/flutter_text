@@ -14,11 +14,11 @@ class Calendar extends StatefulWidget {
   ValueChanged onChange;
 
   Calendar({
-    Key key,
-    this.initTime,
-    this.firstTime,
-    this.endTime,
-    this.onChange,
+    Key? key,
+    required this.initTime,
+    required this.firstTime,
+    required this.endTime,
+    required this.onChange,
   }) : super(key: key);
 
   @override
@@ -26,8 +26,8 @@ class Calendar extends StatefulWidget {
 }
 
 class _CalendarState extends State<Calendar> {
-  PageController pageController;
-  DateTime selectDate;
+  late PageController pageController;
+  late DateTime selectDate;
   int initPage = 0;
   int totalPage = 0;
   String year="";

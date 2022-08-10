@@ -13,6 +13,8 @@ class _BannerTestState extends State<BannerTest> {
   Widget build(BuildContext context) {
     return Container(
       child: ListView.builder(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
           itemCount: 10,
           itemBuilder: (context, i) {
             if (i == 0) {
@@ -88,10 +90,10 @@ class BannerView extends StatefulWidget {
 
 class _BannerViewState extends State<BannerView>
     with SingleTickerProviderStateMixin {
-  TabController _tabController;
-  PageController _pageController;
-  Timer _timer;
-  int _curPageIndex;
+  late TabController _tabController;
+  late PageController _pageController;
+  late Timer _timer;
+  late int _curPageIndex;
   static const Duration animateDuration = const Duration(milliseconds: 500);
 
   List<Widget> children = [];
@@ -150,8 +152,8 @@ class _BannerViewState extends State<BannerView>
               }
             },
             child: NotificationListener(
-              onNotification:(notification){
-                if(notification is ScrollUpdateNotification) {
+              onNotification: (notification) {
+                if (notification is ScrollUpdateNotification) {
                   ScrollUpdateNotification n = notification;
                   /// 判断是否是一次完整的翻页
                   if (n.metrics.atEdge) {
@@ -164,7 +166,9 @@ class _BannerViewState extends State<BannerView>
                     }
                   }
                 }
+                return false; // 保持原有的返回值
               },
+
               child: PageView.builder(
                 itemCount: children.length,
                 itemBuilder: (context, index) {

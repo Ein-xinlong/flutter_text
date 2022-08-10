@@ -15,7 +15,7 @@ class _DrivingBookState extends State<DrivingBook> {
   DrivingBookVm _vm = DrivingBookVm();
 
   /// 初始化控制器
-  PageController pageController;
+  late PageController pageController;
 
   @override
   void initState() {
@@ -87,7 +87,7 @@ class _DrivingBookState extends State<DrivingBook> {
           Visibility(
             child: Container(
               child: ImageBuildView(
-                url: bean.imageURL,
+                url: bean.imageURL!,
               ),
               height: 200,
             ),
@@ -108,7 +108,7 @@ class _DrivingBookState extends State<DrivingBook> {
             children: [
               Container(
                 child: Text(
-                  _vm.getTitle(bean.questionType),
+                  _vm.getTitle(bean.questionType!)!,
                   style: TextStyle(color: Colors.white),
                 ),
                 color: Colors.blue,
@@ -118,7 +118,7 @@ class _DrivingBookState extends State<DrivingBook> {
               ),
               Expanded(
                 child: Text(
-                  bean.question,
+                  bean.question!,
                   style: TextStyle(fontWeight: FontWeight.w600, fontSize: 19),
                 ),
               ),
@@ -147,7 +147,7 @@ class _DrivingBookState extends State<DrivingBook> {
                   ),
                 ),
                 Text(
-                  bean.optionA,
+                  bean.optionA!,
                   style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18,color: bean.colorOne==null?Colors.black:bean.colorOne==2?Colors.green:Colors.red,),
                 ),
                 Container(
@@ -183,7 +183,7 @@ class _DrivingBookState extends State<DrivingBook> {
                 ),
                 Expanded(
                   child: Text(
-                    bean.optionB,
+                    bean.optionB!,
                     style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18,color: bean.colorTwo==null?Colors.black:bean.colorTwo==2?Colors.green:Colors.red,),
                   ),
                 ),
@@ -286,7 +286,7 @@ class _DrivingBookState extends State<DrivingBook> {
 
               Expanded(
                 child: Text(
-                  bean.explains,
+                  bean.explains!,
                   style: TextStyle(fontWeight: FontWeight.w600, fontSize: 19),
                 ),
               ),

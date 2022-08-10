@@ -6,19 +6,19 @@ import 'package:flutter/material.dart';
 /// 紫色FlatButton
 class TextButtonPurple extends StatelessWidget {
   String text;
-  Function onPressed;
-  TextStyle textStyle;
+  Function? onPressed;
+  TextStyle? textStyle;
   bool isDisabled = false;
   BorderRadius _borderRadius = BorderRadius.all(Radius.circular(100));
   List<Color> _colors = [Color(0xFFFFCC99), Color(0xFF99CC99)];
 
   TextButtonPurple(
-      {this.text,
+      {required this.text,
         this.onPressed,
         this.textStyle,
         this.isDisabled = false,
-        BorderRadius borderRadius,
-        List<Color> colors}) {
+        BorderRadius? borderRadius,
+        List<Color>? colors}) {
     if (borderRadius != null) {
       this._borderRadius = borderRadius;
     }
@@ -48,7 +48,7 @@ class TextButtonPurple extends StatelessWidget {
         onPressed: this.isDisabled
             ? null
             : () {
-          this.onPressed.call();
+          this.onPressed!.call();
         },
         child: Padding(
           padding: EdgeInsets.only(left: 10, right: 10),
@@ -91,11 +91,11 @@ class TextButtonWhite extends StatelessWidget {
   BorderRadius _borderRadius = BorderRadius.all(Radius.circular(100));
 
   TextButtonWhite(
-      {this.text,
-        this.onPressed,
-        TextStyle textStyle,
+      {required this.text,
+        required this.onPressed,
+        TextStyle? textStyle,
         this.isDisabled = false,
-        BorderRadius borderRadius}) {
+        BorderRadius? borderRadius}) {
     if (borderRadius != null) {
       this._borderRadius = borderRadius;
     }
@@ -130,11 +130,11 @@ class TextButtonGray extends StatelessWidget {
   BorderRadius _borderRadius = BorderRadius.all(Radius.circular(100));
 
   TextButtonGray(
-      {this.text,
-        this.onPressed,
-        TextStyle textStyle,
+      {required this.text,
+        required this.onPressed,
+        TextStyle? textStyle,
         this.isDisabled = false,
-        BorderRadius borderRadius}) {
+        BorderRadius? borderRadius}) {
     if (borderRadius != null) {
       this._borderRadius = borderRadius;
     }
@@ -162,16 +162,16 @@ class TextButtonGray extends StatelessWidget {
 class OutlineButtonPurple extends StatelessWidget {
   String text;
   Function onPressed;
-  TextStyle textStyle;
+  TextStyle? textStyle;
   bool isDisabled = false;
   BorderRadius _borderRadius = BorderRadius.all(Radius.circular(100));
 
   OutlineButtonPurple(
-      {this.text,
-        this.onPressed,
+      {required this.text,
+        required this.onPressed,
         this.textStyle,
         this.isDisabled = false,
-        BorderRadius borderRadius}) {
+        BorderRadius? borderRadius}) {
     if (borderRadius != null) {
       _borderRadius = borderRadius;
     }
@@ -179,7 +179,7 @@ class OutlineButtonPurple extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return OutlineButton(
+    return OutlinedButton(
         onPressed: this.isDisabled
             ? null
             : () {
@@ -195,15 +195,16 @@ class OutlineButtonPurple extends StatelessWidget {
           ),
           maxLines: 1,
         ),
-        color: Colors.white,
-        textColor: Color(0xFF1A1A1A),
-        borderSide: BorderSide(color: Color(0xFF4B5FE1)),
-        disabledBorderColor: Color(0xFF4B5FE1).withOpacity(0.6),
-        disabledTextColor: Color(0xFF1A1A1A).withOpacity(0.6),
-        highlightColor: Colors.black12,
-        highlightedBorderColor: Color(0xFF4B5FE1),
-        shape: RoundedRectangleBorder(
-          borderRadius: _borderRadius,
-        ));
+        // color: Colors.white,
+        // textColor: Color(0xFF1A1A1A),
+        // borderSide: BorderSide(color: Color(0xFF4B5FE1)),
+        // disabledBorderColor: Color(0xFF4B5FE1).withOpacity(0.6),
+        // disabledTextColor: Color(0xFF1A1A1A).withOpacity(0.6),
+        // highlightColor: Colors.black12,
+        // highlightedBorderColor: Color(0xFF4B5FE1),
+        // shape: RoundedRectangleBorder(
+        //   borderRadius: _borderRadius,
+        // )
+        );
   }
 }

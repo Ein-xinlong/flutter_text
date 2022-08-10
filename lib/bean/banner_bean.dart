@@ -7,11 +7,11 @@ part 'banner_bean.g.dart';
 @JsonSerializable()
 class BannerBean  extends AnResponse{
 
-  List<Data> data;
+  List<Data>? data;
 
-  int errorCode;
+  int? errorCode;
 
-  String errorMsg;
+  String? errorMsg;
 
   BannerBean();
 
@@ -25,21 +25,21 @@ class BannerBean  extends AnResponse{
 @JsonSerializable()
 class Data {
 
-  String desc;
+  String? desc;
 
-  int id;
+  int? id;
 
-  String imagePath;
+  String? imagePath;
 
-  int isVisible;
+  int? isVisible;
 
-  int order;
+  int? order;
 
-  String title;
+  String? title;
 
-  int type;
+  int? type;
 
-  String url;
+  String? url;
 
   Data();
 

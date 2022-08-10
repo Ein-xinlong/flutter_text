@@ -61,15 +61,15 @@ class _DrowPageState extends State<DrowPage> {
 // 获取Uint8List数据
   Future<Uint8List> toPng() async {
     try {
-      RenderRepaintBoundary boundary =
-          comGlobalKey.currentContext.findRenderObject();
-      var image = await boundary.toImage(pixelRatio: 3.0);
-      ByteData byteData = await image.toByteData(format: ImageByteFormat.png);
-      Uint8List pngBytes = byteData.buffer.asUint8List();
+      RenderRepaintBoundary? boundary =
+          comGlobalKey.currentContext?.findRenderObject() as RenderRepaintBoundary?;
+      var image = await boundary?.toImage(pixelRatio: 3.0);
+      ByteData? byteData = await image!.toByteData(format: ImageByteFormat.png);
+      Uint8List pngBytes = byteData!.buffer.asUint8List();
 
       return pngBytes; //这个对象就是图片数据
     } catch (e) {
-      print(e);
+      return Uint8List(0);
     }
   }
 
@@ -104,16 +104,16 @@ class _DrowPageState extends State<DrowPage> {
                 Container(
                   width: 100,
                   height: 50,
-                  child: FlatButton(
+                  child: TextButton(
                     onPressed: _controller.deleteDorw,
                     child: Text("清除"),
-                    color: Colors.blueGrey,
+
                   ),
                 ),
                 Container(
                   width: 100,
                   height: 50,
-                  child: FlatButton(
+                  child: TextButton(
                     onPressed: () {
                       toPng().then((data) {
                         setState(() {
@@ -123,7 +123,7 @@ class _DrowPageState extends State<DrowPage> {
                       });
                     },
                     child: Text("截图保存"),
-                    color: Colors.blueGrey,
+
                   ),
                 )
               ],
@@ -166,7 +166,7 @@ class _Model {
   final Offset offset;
   final Paint paint;
 
-  _Model({this.offset, this.paint});
+  _Model({required this.offset, required this.paint});
 }
 
 class _Controller extends GetxController {
@@ -187,7 +187,8 @@ class _Controller extends GetxController {
   }
 
   void onPanEnd(DragEndDetails d) {
-    points.add(null);
+    final model = _Model(offset: Offset(0,0), paint: paint);
+    points.add(model);
   }
 
   void deleteDorw() {

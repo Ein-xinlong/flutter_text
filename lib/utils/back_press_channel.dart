@@ -26,17 +26,16 @@ class BackPressChannel{
     return _instance;
   }
 
-  register(BuildContext context, {String pageName}) {
+  register(BuildContext context, {String? pageName}) {
     contextStack.add(context);
     pageNameStack.add(pageName ?? 'unknownPage');
     _isPreventBack = false; // 打开新页面时，总是还原
 
   }
 
-  BuildContext unregisterLast() {
-    BuildContext context;
+  BuildContext? unregisterLast() {
+    BuildContext? context;
     try {
-
       context = contextStack.removeLast();
       pageNameStack.removeLast();
       _isPreventBack = false; // 关闭新页面时，总是还原
@@ -59,7 +58,7 @@ class BackPressChannel{
   }
 
   @override
-  Future<Map> onChannel(
+  Future<Map>? onChannel(
       String moduleName, String methodName, Map<String, dynamic> map) {
     if (methodName == 'onBackPressed') {
       if (!_isPreventBack) {

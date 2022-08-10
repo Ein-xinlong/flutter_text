@@ -7,11 +7,11 @@ part 'home_list_bean.g.dart';
 @JsonSerializable()
 class HomeList extends AnResponse {
 
-  Datas data;
+  Datas? data;
 
-  int errorCode;
+  int? errorCode;
 
-  String errorMsg;
+  String? errorMsg;
 
   HomeList();
 
@@ -25,19 +25,19 @@ class HomeList extends AnResponse {
 @JsonSerializable()
 class Datas extends Object {
 
-  int curPage;
+  int? curPage;
 
-  List<Item> datas;
+  List<Item>? datas;
 
-  int offset;
+  int? offset;
 
-  bool over;
+  bool? over;
 
-  int pageCount;
+  int? pageCount;
 
-  int size;
+  int? size;
 
-  int total;
+  int? total;
 
   Datas();
 
@@ -51,71 +51,71 @@ class Datas extends Object {
 @JsonSerializable()
 class Item extends Object {
 
-  String apkLink;
+  String? apkLink;
 
-  int audit;
+  int? audit;
 
-  String author;
+  String? author;
 
-  bool canEdit;
+  bool? canEdit;
 
-  int chapterId;
+  int? chapterId;
 
-  String chapterName;
+  String? chapterName;
 
-  bool collect;
+  bool? collect;
 
-  int courseId;
+  int? courseId;
 
-  String desc;
+  String? desc;
 
-  String descMd;
+  String? descMd;
 
-  String envelopePic;
+  String? envelopePic;
 
-  bool fresh;
+  bool? fresh;
 
-  String host;
+  String? host;
 
-  int id;
+  int? id;
 
-  String link;
+  String? link;
 
-  String niceDate;
+  String? niceDate;
 
-  String niceShareDate;
+  String? niceShareDate;
 
-  String origin;
+  String? origin;
 
-  String prefix;
+  String? prefix;
 
-  String projectLink;
+  String projectLink="";
 
-  int publishTime;
+  int? publishTime;
 
-  int realSuperChapterId;
+  int? realSuperChapterId;
 
-  int selfVisible;
+  int? selfVisible;
 
-  int shareDate;
+  int? shareDate;
 
-  String shareUser;
+  String? shareUser;
 
-  int superChapterId;
+  int? superChapterId;
 
-  String superChapterName;
+  String? superChapterName;
 
-  List<dynamic> tags;
+  List<dynamic>? tags;
 
-  String title;
+  String? title;
 
-  int type;
+  int? type;
 
-  int userId;
+  int? userId;
 
-  int visible;
+  int? visible;
 
-  int zan;
+  int? zan;
 
   Item();
 

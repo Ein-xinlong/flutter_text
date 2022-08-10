@@ -14,12 +14,12 @@ class DayGridView extends StatefulWidget {
   ValueChanged onChange;
 
   DayGridView({
-    Key key,
-    @required this.initDate,
-    @required this.selectDate,
-    @required this.year,
-    @required this.month,
-    this.onChange,
+    Key? key,
+    required this.initDate,
+    required this.selectDate,
+    required this.year,
+    required this.month,
+    required this.onChange,
   });
 
   @override
@@ -27,14 +27,14 @@ class DayGridView extends StatefulWidget {
 }
 
 class _DayGridViewState extends State<DayGridView> {
-  DateTime startTime;
-  DateTime endTime;
+  late DateTime? startTime;
+  late DateTime? endTime;
   @override
   void initState() {
     super.initState();
   }
 
-  List<Widget> dayItems() {
+  List dayItems() {
     List days = TimeUtil.getDay(
         widget.year, widget.month, MaterialLocalizations.of(context));
     List dayWidgets = days.map((value) {
@@ -191,9 +191,9 @@ class _DayGridViewState extends State<DayGridView> {
     return dayWidgets;
   }
 
-  Color getColor(DateTime value){
+  Color? getColor(DateTime value){
     if(startTime==null&&endTime==null){
-      return WHITE;
+      return WHITE!;
     }else{
       if(startTime!=null&&value==startTime){
         return Color(0xFF6699CC);
@@ -202,11 +202,11 @@ class _DayGridViewState extends State<DayGridView> {
         return Color(0xFF6699CC);
       }
       if(startTime!=null&&endTime!=null){
-        if(value.isAfter(startTime)&&value.isBefore(endTime)){
-          return CALENDAR_SECTION;
+        if(value.isAfter(startTime!)&&value.isBefore(endTime!)){
+          return CALENDAR_SECTION!;
         }
       }else{
-        return WHITE;
+        return WHITE!;
       }
     }
 
@@ -216,7 +216,7 @@ class _DayGridViewState extends State<DayGridView> {
     if(startTime==null){
       startTime=value;
     }else{
-      if(startTime.isAfter(value)){
+      if(startTime!.isAfter(value)){
         startTime=value;
         endTime=null;
       }else{
@@ -234,7 +234,7 @@ class _DayGridViewState extends State<DayGridView> {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> list = dayItems();
+    List<Widget>? list = dayItems().cast<Widget>();
     return  Column(
       children: [
         SizedBox(height: 20,),
@@ -267,17 +267,17 @@ class _DayGridViewState extends State<DayGridView> {
 
 /// 自定义GridView
 class _DayPickerGridDelegate extends SliverGridDelegate {
-  final int mainAxisNumber;
+  final int? mainAxisNumber;
 
   const _DayPickerGridDelegate({
-    this.mainAxisNumber,
+     this.mainAxisNumber,
   });
 
   @override
   SliverGridLayout getLayout(SliverConstraints constraints) {
     const int columnCount = DateTime.daysPerWeek;
     final double tileWidth = constraints.crossAxisExtent / columnCount;
-    final double tileHeight = 300 / mainAxisNumber;
+    final double tileHeight = 300 / mainAxisNumber!;
     return SliverGridRegularTileLayout(
       crossAxisCount: columnCount,
       mainAxisStride: tileHeight,
@@ -292,4 +292,4 @@ class _DayPickerGridDelegate extends SliverGridDelegate {
   bool shouldRelayout(_DayPickerGridDelegate oldDelegate) => false;
 }
 
-const _DayPickerGridDelegate _kDayPickerGridDelegate = _DayPickerGridDelegate();
+const _DayPickerGridDelegate _kDayPickerGridDelegate = _DayPickerGridDelegate(mainAxisNumber: null);

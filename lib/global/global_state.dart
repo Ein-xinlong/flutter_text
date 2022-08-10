@@ -43,13 +43,13 @@ class GlobalState{
       ];
 
   GlobalState copyWith({
-    double  height,
-    String  fontFamily,
-    MaterialColor  themeColor,
-    bool  showBackGround,
-    int  codeStyleIndex,
-    int  itemStyleIndex,
-    bool  showPerformanceOverlay,
+    double?  height,
+    String?  fontFamily,
+    MaterialColor?  themeColor,
+    bool?  showBackGround,
+    int?  codeStyleIndex,
+    int?  itemStyleIndex,
+    bool?  showPerformanceOverlay,
   }) =>
       GlobalState(
         fontFamily: fontFamily ?? this.fontFamily,

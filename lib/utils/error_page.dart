@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 
 class AnErrorWidget extends StatelessWidget {
 
-  String tip;
-  String errorIcon;
+  String? tip;
+  String? errorIcon;
   AnErrorWidget({this.tip , this.errorIcon});
 
   @override
@@ -20,16 +20,16 @@ class AnErrorWidget extends StatelessWidget {
 typedef OnReTryPress = void Function();
 
 class _ErrorPage extends StatefulWidget {
-  final Icon errorImage;
-  final Text errorText;
-  final Widget btnWidget;
-  final double space1;
-  final double space2;
-  final double offsetY;
-  final OnReTryPress retry;
+  final Icon? errorImage;
+  final Text? errorText;
+  final Widget? btnWidget;
+  final double? space1;
+  final double? space2;
+  final double? offsetY;
+  final OnReTryPress? retry;
 
   _ErrorPage(
-      {Key key,
+      {Key? key,
       this.errorImage,
       this.errorText,
       this.btnWidget,
@@ -66,7 +66,7 @@ class _ErrorPageState extends State<_ErrorPage> {
                 GestureDetector(
                   onTap: () {
                     if (widget.retry != null) {
-                      widget.retry();
+                      widget.retry!();
                     }
                   },
                   child: widget.btnWidget ?? Container(),

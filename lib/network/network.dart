@@ -1,8 +1,8 @@
 import 'dart:io';
 
 import 'package:cookie_jar/cookie_jar.dart';
-import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
+import 'package:dio/io.dart';
 import 'package:dio_cookie_manager/dio_cookie_manager.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +15,7 @@ class PdaNetworkConfig {
   var currentEnv = AnNetworkEnv.Product;
   Map<String, String> _headers = {};
   Map<String, dynamic> _commonParameters = {};
-  String _proxy;
+  String? _proxy;
   var _environments = {
     AnNetworkEnv.Product: PdaNetworkEnvironment(
       baseUrl: 'https://www.wanandroid.com/',///https://httpbin.org/  测试get post接口
@@ -28,7 +28,7 @@ class PdaNetworkConfig {
     ),
   };
 
-  PdaNetworkEnvironment get environment => _environments[currentEnv];
+  PdaNetworkEnvironment? get environment => _environments[currentEnv];
 
   factory PdaNetworkConfig.shareInstance() => _instance;
 
@@ -60,7 +60,7 @@ class PdaNetworkConfig {
   }
 
   String get proxy {
-    return _proxy;
+    return _proxy!;
   }
 
   /// 设置Header中的 Cookie，key == null 不生效, value == null，remove该key
@@ -85,8 +85,8 @@ class PdaNetworkConfig {
   BaseOptions get baseOptions {
     var env = _environments[currentEnv];
     return BaseOptions(
-        baseUrl: env.baseUrl,
-        connectTimeout: 20 * 1000,
+        baseUrl: env!.baseUrl,
+        connectTimeout: Duration(seconds: 20),
         contentType: Headers.jsonContentType,
         followRedirects: false,
         headers: _headers);
@@ -98,7 +98,7 @@ typedef RequestSuccess = void Function(Response response);
 typedef RequestFailed = void Function(dynamic error);
 
 class AnNetwork {
-  Dio _dio;
+  Dio? _dio;
 
   factory AnNetwork.shareInstance() => _shareInstance();
 
@@ -108,37 +108,33 @@ class AnNetwork {
     return _instance;
   }
 
-  Dio get getDio => _dio;
+  Dio get getDio => _dio!;
 
   AnNetwork._() {
     _dio = Dio(PdaNetworkConfig.shareInstance().baseOptions);
 
 
-    _dio.interceptors.add(TokenExpiredInterceptor());
-    _dio.interceptors.add(InterceptorsWrapper(
-        onRequest: (RequestOptions options){
-          print("\n================== 请求数据 ==========================");
-          print("url = ${options.uri.toString()}");
-          print("headers = ${options.headers}");
-          print("params = ${options.data}");
-        },
-        onResponse: (Response response){
-          print("\n================== 响应数据 ==========================");
-          print("code = ${response.statusCode}");
-          print("data = ${response.data}");
-          print("\n");
-        },
-        onError: (DioError e){
-          print("\n================== 错误响应数据 ======================");
-          print("type = ${e.type}");
-          print("message = ${e.message}");
-          print("stackTrace = ${e.response}");
-          print("\n");
-        }
+    _dio!.interceptors.add(TokenExpiredInterceptor());
+    _dio!.interceptors.add(InterceptorsWrapper(
+      onRequest: (RequestOptions options, RequestInterceptorHandler handler) {
+        print("\n================== 请求数据 ==========================");
+        print("url = ${options.uri.toString()}");
+        print("headers = ${options.headers}");
+        print("params = ${options.data}");
+        handler.next(options); // 手动调用 next 方法以继续请求链
+      },
+      onError: (DioError e, ErrorInterceptorHandler handler) {
+        print("\n================== 错误响应数据 ======================");
+        print("type = ${e.type}");
+        print("message = ${e.message}");
+        print("stackTrace = ${e.response}");
+        print("\n");
+        handler.next(e); // 手动调用 next 方法以继续请求链
+      },
     ));
-    _addCookieJar(_dio);
+    _addCookieJar(_dio!);
     if (PdaNetworkConfig.shareInstance().proxy?.isNotEmpty == true) {
-      _configProxy(_dio);
+      _configProxy(_dio!);
     }
   }
 
@@ -160,7 +156,8 @@ class AnNetwork {
   _addCookieJar(Dio dio) async {
     Directory appDocDir = await getApplicationDocumentsDirectory();
     String appDocPath = appDocDir.path;
-    var cookieJar = PersistCookieJar(dir: appDocPath + "/.cookies/");
+    //var cookieJar = PersistCookieJar(dir: appDocPath + "/.cookies/");
+    var cookieJar = PersistCookieJar();
     dio.interceptors.add(CookieManager(cookieJar));
     dio.interceptors.add(CookieManager(cookieJar));
   }
@@ -170,12 +167,12 @@ class AnNetwork {
   }
 
   post<T>(String path,
-      {Map<String, dynamic> paramaters,
-        CancelToken cancelToken,
-        Map<String, dynamic> query,
-        Options options,
-        RequestSuccess success,
-        RequestFailed failed}) async {
+      {Map<String, dynamic>? paramaters,
+        CancelToken? cancelToken,
+        Map<String, dynamic>? query,
+        Options? options,
+        RequestSuccess? success,
+        RequestFailed? failed}) async {
     try {
       Map<String, dynamic> nonNullParameters = paramaters ?? {};
       Options nonNullOptions = options ?? Options();
@@ -184,49 +181,49 @@ class AnNetwork {
       await _post(
         path,
         paramaters: nonNullParameters,
-        cancelToken: cancelToken,
-        query: query,
+        cancelToken: cancelToken!,
+        query: query!,
         options: nonNullOptions,
         success: (response) {
-          success(response);
+          success!(response);
         },
       );
     } catch (e) {
-      failed(e);
+      failed!(e);
     }
   }
 
   _post<T>(
       String path, {
-        Map<String, dynamic> paramaters,
-        CancelToken cancelToken,
-        Map<String, dynamic> query,
-        Options options,
-        RequestSuccess success,
+        Map<String, dynamic>? paramaters,
+        CancelToken? cancelToken,
+        Map<String, dynamic>? query,
+        Options? options,
+        RequestSuccess? success,
       }) async {
     Map<String, dynamic> paramMap = paramaters ?? {};
     var usedDio = _dio;
 
-    Response<T> response = await usedDio.post(
+    Response<T> response = await usedDio!.post(
       path,
       data: paramMap,
       queryParameters: query,
       options: options,
       cancelToken: cancelToken,
     );
-    success(response);
+    success!(response);
   }
 
   _configOption(Options options) {}
 
   get<T>(String path,
       {bool isColor = true,
-        String functionId,
-        Map<String, dynamic> queryParameters,
-        CancelToken cancelToken,
-        Options options,
-        RequestSuccess success,
-        RequestFailed failed}) async {
+        String? functionId,
+        Map<String, dynamic>? queryParameters,
+        CancelToken? cancelToken,
+        Options? options,
+        RequestSuccess? success,
+        RequestFailed? failed}) async {
     try {
       Map<String, dynamic> nonNullParameters = queryParameters ?? {};
       Options nonNullOptions = options ?? Options();
@@ -235,53 +232,51 @@ class AnNetwork {
       await _get(
         path,
         queryParameters: nonNullParameters,
-        cancelToken: cancelToken,
+        cancelToken: cancelToken!,
         options: nonNullOptions,
         success: (response) {
-          success(response);
+          success!(response);
         },
       );
     } catch (e) {
-      failed(e);
+      failed!(e);
     }
   }
 
   _get<T>(
       String path, {
-        Map<String, dynamic> queryParameters,
-        CancelToken cancelToken,
-        Options options,
-        RequestSuccess success,
+        Map<String, dynamic>? queryParameters,
+        CancelToken? cancelToken,
+        Options? options,
+        RequestSuccess? success,
       }) async {
     Map<String, dynamic> paramMap = queryParameters ?? {};
     var usedDio = _dio;
 
-    Response<T> response = await usedDio.get(
+    Response<T> response = await usedDio!.get(
       path,
       queryParameters: paramMap,
       options: options,
       cancelToken: cancelToken,
     );
-    success(response);
+    success!(response);
   }
 }
 
 class TokenExpiredInterceptor extends Interceptor {
   @override
-  Future onResponse(Response response) {
-    // 302失效
-    if (response.statusCode == 302) {
-      Log.e("302");
-    }
-    return super.onResponse(response);
+  void onResponse(Response response, ResponseInterceptorHandler handler) {
+      if (response.statusCode == 302) {
+        Log.e("302");
+      }
+    super.onResponse(response, handler);
   }
-
   @override
-  Future onError(DioError err) {
-    if (err.response.statusCode == 302) {
-      Log.e("302");
-    }
-    return super.onError(err);
+  void onError(DioException err, ErrorInterceptorHandler handler) {
+      if (err.response!.statusCode == 302) {
+        Log.e("302");
+      }
+    super.onError(err, handler);
   }
 }
 
@@ -289,6 +284,6 @@ class PdaNetworkEnvironment {
   String baseUrl;
 
   PdaNetworkEnvironment({
-    @required this.baseUrl,
+    required this.baseUrl,
   });
 }

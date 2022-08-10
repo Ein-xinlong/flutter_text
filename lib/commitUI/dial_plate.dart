@@ -5,23 +5,23 @@ import 'package:flutter/material.dart';
 
 ///表盘
 class DialPlate extends CustomPainter {
-   Paint _paintDial;
-   Paint _paintGradient;
-   double _radius;
+   Paint? _paintDial;
+   Paint? _paintGradient;
+   double? _radius;
 
-  double _screenWidth;
-   double _screenHeight;
-  int _numPoint = 24;
-  ParagraphBuilder _timeParagraphBuilder;
+  double? _screenWidth;
+   double? _screenHeight;
+  int? _numPoint = 24;
+  ParagraphBuilder? _timeParagraphBuilder;
 
   //渐变颜色
-  Color _startColor;
-  Color _endColor;
+  Color? _startColor;
+  Color? _endColor;
 
   DialPlate(BuildContext context,Color startColor,Color endColor) {
     _screenWidth = MediaQuery.of(context).size.width;
     _screenHeight = MediaQuery.of(context).size.height;
-    _radius = _screenWidth / 100 * 37;
+    _radius = _screenWidth! / 100 * 37;
 
     _startColor = startColor;
     _endColor = endColor;
@@ -31,11 +31,11 @@ class DialPlate extends CustomPainter {
       ..isAntiAlias = true
       ..style = PaintingStyle.fill;
 
-    var circle = Rect.fromCircle(center: Offset(0, 0), radius: _screenHeight);
+    var circle = Rect.fromCircle(center: Offset(0, 0), radius: _screenHeight!);
     var sweepGradient = SweepGradient(
       colors: [
-        _startColor,
-        _endColor
+        _startColor!,
+        _endColor!
       ],
     );
     _paintGradient = Paint()
@@ -57,32 +57,32 @@ class DialPlate extends CustomPainter {
     var minute = dateTime.minute;
     var second = dateTime.second;
 
-    canvas.translate(_screenWidth / 2, _screenHeight / 100 * 35);
+    canvas.translate(_screenWidth! / 2, _screenHeight! / 100 * 35);
     //绘制渐变背景
     canvas.save();
     canvas.rotate(_getRotate(second));
-    canvas.drawCircle(Offset(0, 0), _screenHeight, _paintGradient);
+    canvas.drawCircle(Offset(0, 0), _screenHeight!, _paintGradient!);
     canvas.restore();
 
     //绘制表盘
     canvas.save();
-    for (double i = 0; i < _numPoint; i++) {
+    for (double i = 0; i < _numPoint!; i++) {
       canvas.save();
-      double deg = 360 / _numPoint * i;
+      double deg = 360 / _numPoint! * i;
       canvas.rotate(deg / 180 * pi);
 
       if (isShowBigCircle(hour, i)) {
         //绘制阴影
         Path path = Path()
-          ..addArc(Rect.fromCircle(center: Offset(_radius, 0), radius: 8), 0,
+          ..addArc(Rect.fromCircle(center: Offset(_radius!, 0), radius: 8), 0,
               pi * 2);
         canvas.drawShadow(path, Colors.yellow, 4, true);
         //绘制小时的圆点
-        _paintDial.color = Colors.yellow;
-        canvas.drawCircle(Offset(_radius, 0), 8, _paintDial);
+        _paintDial!.color = Colors.yellow;
+        canvas.drawCircle(Offset(_radius!, 0), 8, _paintDial!);
       } else {
-        _paintDial.color = Colors.white;
-        canvas.drawCircle(Offset(_radius, 0), 3, _paintDial);
+        _paintDial!.color = Colors.white;
+        canvas.drawCircle(Offset(_radius!, 0), 3, _paintDial!);
       }
       canvas.restore();
 
@@ -97,9 +97,9 @@ class DialPlate extends CustomPainter {
       //       ),
       //     ]
       // ));
-      _timeParagraphBuilder.addText(_getTimeStr(hour, minute));
+      _timeParagraphBuilder!.addText(_getTimeStr(hour, minute));
 
-      Paragraph paragraph = _timeParagraphBuilder.build();
+      Paragraph paragraph = _timeParagraphBuilder!.build();
       paragraph.layout(ParagraphConstraints(width: 230));
       canvas.drawParagraph(paragraph, Offset(-115,-45));
       canvas.restore();

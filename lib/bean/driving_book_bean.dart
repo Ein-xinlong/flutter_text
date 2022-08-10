@@ -7,11 +7,11 @@ part 'driving_book_bean.g.dart';
 @JsonSerializable(explicitToJson: true)
 class DrivingBookBean extends AnResponse{
 
-  String statusCode;
+  String? statusCode;
 
-  String desc;
+  String? desc;
 
-  Result result;
+  Result? result;
 
   DrivingBookBean();
 
@@ -25,9 +25,9 @@ class DrivingBookBean extends AnResponse{
 @JsonSerializable()
 class Result {
 
-  List<DriverQuestionList> driverQuestionList;
+  List<DriverQuestionList>? driverQuestionList;
 
-  int totalCount;
+  int? totalCount;
 
   Result();
 
@@ -41,39 +41,39 @@ class Result {
 @JsonSerializable()
 class DriverQuestionList{
 
-  int questionID;
+  int? questionID;
 
-  String question;
+  String? question;
 
-  String questionType;
+  String? questionType;
 
-  String optionA;
+  String? optionA;
 
-  String optionB;
+  String? optionB;
 
-  String optionC;
+  String? optionC;
 
-  String optionD;
+  String? optionD;
 
-  String key;
+  String? key;
 
-  String imageURL;
+  String? imageURL;
 
-  String explains;
+  String? explains;
 
-  String licenseType;
+  String? licenseType;
 
-  String subjectType;
+  String? subjectType;
 
-  int colorOne;///记录显示的颜色，接口没有返回前端自定义    默认白色 2为回答正确绿色  3为回答错误红色
+  int? colorOne;///记录显示的颜色，接口没有返回前端自定义    默认白色 2为回答正确绿色  3为回答错误红色
 
-  int colorTwo;
+  int? colorTwo;
 
-  int colorThree;
+  int? colorThree;
 
-  int colorFour;
+  int? colorFour;
 
-  bool isShow;
+  bool? isShow;
 
   DriverQuestionList();
 

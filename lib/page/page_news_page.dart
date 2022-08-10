@@ -66,11 +66,11 @@ class _NewsPageState extends State<NewsPage> {
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(result.title,style: TextStyle(fontSize: 18,fontWeight: FontWeight.w600),),
+        Text(result.title!,style: TextStyle(fontSize: 18,fontWeight: FontWeight.w600),),
         SizedBox(height: 10,),
-        Image.network(result.image,width:double.infinity,height: 150,fit: BoxFit.fill,),
+        Image.network(result.image!,width:double.infinity,height: 150,fit: BoxFit.fill,),
         SizedBox(height: 10,),
-        Text(result.passtime),
+        Text(result.passtime!),
         SizedBox(height: 15,)
       ],
     ),);

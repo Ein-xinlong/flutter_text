@@ -57,9 +57,9 @@ class _ThreeDSpinState extends State<ThreeDSpin> with SingleTickerProviderStateM
       ),
     ),
   );
-  AnimationController _controller;
-  Animation<double> _animation;
-  Animation<double> _animation1;
+  late AnimationController _controller;
+  late Animation<double> _animation;
+  late Animation<double> _animation1;
 @override
   void initState() {
     // TODO: implement initState

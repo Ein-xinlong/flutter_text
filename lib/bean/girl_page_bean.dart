@@ -7,11 +7,11 @@ part 'girl_page_bean.g.dart';
 @JsonSerializable()
 class GirlPageBean extends AnResponse {
 
-  int code;
+  int? code;
 
-  String message;
+  String? message;
 
-  List<Result> result;
+  List<Result>? result;
 
   GirlPageBean();
 
@@ -25,11 +25,11 @@ class GirlPageBean extends AnResponse {
 @JsonSerializable()
 class Result  {
 
-  int id;
+  int? id;
 
-  String time;
+  String? time;
 
-  String img;
+  String? img;
 
   Result();
 

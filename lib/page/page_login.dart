@@ -5,8 +5,8 @@ import 'package:untitled/page/page_main_tabs.dart';
 import 'package:untitled/utils/sputils.dart';
 import 'package:untitled/utils/toash.dart';
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key key, this.title}) : super(key: key);
-  final String title;
+  const LoginPage({Key? key, this.title}) : super(key: key);
+  final String? title;
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -14,7 +14,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final GlobalKey _formKey = GlobalKey<FormState>();
-  String _email, _password;
+  String? _email, _password;
   bool _isObscure = true;
   Color _eyeColor = Colors.grey;
   final List _loginMethod = [
@@ -165,7 +165,7 @@ class _LoginPageState extends State<LoginPage> {
         obscureText: _isObscure, // 是否显示文字
         onSaved: (v) => _password = v,
         validator: (v) {
-          if (v.isEmpty) {
+          if (v!.isEmpty) {
             return '请输入密码';
           }
         },
@@ -182,7 +182,7 @@ class _LoginPageState extends State<LoginPage> {
                   _isObscure = !_isObscure;
                   _eyeColor = (_isObscure
                       ? Colors.grey
-                      : Theme.of(context).iconTheme.color);
+                      : Theme.of(context).iconTheme.color)!;
                 });
               },
             )));
@@ -194,7 +194,7 @@ class _LoginPageState extends State<LoginPage> {
       validator: (v) {
         var emailReg = RegExp(
             r"[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?");
-        if (!emailReg.hasMatch(v)) {
+        if (!emailReg.hasMatch(v!)) {
           return '请输入正确的邮箱地址';
         }
       },

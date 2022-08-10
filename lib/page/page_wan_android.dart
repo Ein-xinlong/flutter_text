@@ -130,13 +130,13 @@ class _AndroidHomeState extends State<AndroidHome> {
                 child: Padding(
                   padding: EdgeInsets.only(left: 5,right: 5,top: 2,bottom: 2),
                   child:Center(
-                    child: Text(item.author.length<1?"空":item.author.substring(0,1),style: TextStyle(color: Colors.white),),
+                    child: Text(item.author!.length<1?"空":item.author!.substring(0,1),style: TextStyle(color: Colors.white),),
                   ),
                 ),
 
               ),
               SizedBox(width: 5,),
-              Text(item.author==null?"":item.author,style: TextStyle(fontWeight: FontWeight.w600,fontSize: 16),),
+              Text(item.author==null?"":item.author!,style: TextStyle(fontWeight: FontWeight.w600,fontSize: 16),),
               SizedBox(width: 5,),
               Visibility(child: Container(
                 decoration: new BoxDecoration(
@@ -153,7 +153,7 @@ class _AndroidHomeState extends State<AndroidHome> {
                     child: Text("最新",style: TextStyle(color: Colors.grey),),
                   ),
                 ),
-              ),visible: item.fresh?true:false,),
+              ),visible: item.fresh!?true:false,),
               Spacer(),
               Icon(Icons.restore,size: 13,),
               Text(item.niceDate.toString(),style: TextStyle(color: Colors.grey,fontSize: 13),),
@@ -173,7 +173,7 @@ class _AndroidHomeState extends State<AndroidHome> {
                   child: Padding(
                     padding: EdgeInsets.only(left: 10,right: 10,top: 3,bottom:3),
                     child:Center(
-                      child: Text(item.superChapterName,style: TextStyle(color: Colors.white),),
+                      child: Text(item.superChapterName!,style: TextStyle(color: Colors.white),),
                     ),
                   ),
                 ),

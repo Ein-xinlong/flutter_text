@@ -7,7 +7,7 @@ import 'package:untitled/utils/common_body.dart';
 class AnBaseViewModel extends ChangeNotifier{
 
   ///缓存BuildContext
-  BuildContext context;
+  BuildContext? context;
 
   ///页面加载状态
   var _loadState = AnPageState.Loading;

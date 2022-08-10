@@ -26,8 +26,8 @@ class AndroidHomeVm extends AnBaseViewModel{
           isShow=true;
           BannerBean bean=  BannerBean.fromJson(response.data);
           itemBean.clear();
-        for(int i=0;i<bean.data.length;i++){
-          itemBean.add(BannerItem.defaultBannerItem(bean.data[i].imagePath, bean.data[i].title));
+        for(int i=0;i<bean.data!.length;i++){
+          itemBean.add(BannerItem.defaultBannerItem(bean.data![i].imagePath!, bean.data![i].title!));
         }
           print(itemBean.length.toString());
           notifyListeners();
@@ -52,15 +52,15 @@ class AndroidHomeVm extends AnBaseViewModel{
         success: (response){
 
           HomeList bean= HomeList.fromJson(response.data);
-          if (bean.data.datas.length == 0) {
+          if (bean.data!.datas!.length == 0) {
             noMore = true;
           }
-          if(bean.data.datas.length>0){
+          if(bean.data!.datas!.length>0){
             if(isTrue==true){
               homeList.clear();
-              homeList.addAll(bean.data.datas);
+              homeList.addAll(bean.data!.datas!);
             }else{
-              homeList.addAll(bean.data.datas);
+              homeList.addAll(bean.data!.datas!);
             }
           }
           isShow=true;

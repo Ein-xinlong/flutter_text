@@ -32,7 +32,7 @@ String retureDate(String data) {
   return year + "." + month + "." + day;
 }
 
-String calendarManager(int pos) {
+String? calendarManager(int pos) {
   var formater = DateFormat('yyyy.MM.dd');
   DateTime now = DateTime.now(); //2021.8.24   获取今天的日期
 

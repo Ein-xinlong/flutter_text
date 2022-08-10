@@ -38,13 +38,16 @@ class ImageViewModel extends AnBaseViewModel {
   FlutterLocalNotificationsPlugin();
   init(){
     var an = new AndroidInitializationSettings('@mipmap/ic_launcher');
-    var io = new IOSInitializationSettings();
-    var mac = new MacOSInitializationSettings();
+    // var io = new IOSInitializationSettings();
+    // var mac = new MacOSInitializationSettings();
     final InitializationSettings initializationSettings =
-    InitializationSettings(android: an, iOS: io, macOS: mac);
-    flutterLocalNotificationsPlugin.initialize(initializationSettings,
-        onSelectNotification: selectNotification);
-}
+    InitializationSettings(android: an);
+    // 初始化 Flutter 本地通知插件
+     flutterLocalNotificationsPlugin.initialize(initializationSettings,
+       //点击暂未处理
+    );
+
+  }
   ///loading是否显示
   var loadState = AnPageState.Success;
 
@@ -117,11 +120,11 @@ class ImageViewModel extends AnBaseViewModel {
     itemList14.itemName = "扫描二维码";
     itemList14.imageUrl = "assets/images/DASH.png";
     itemList14.marker = 14;
-    mainList.item.add(itemList);
-    mainList.item.add(itemList1);
-    mainList.item.add(itemList2);
-    mainList.item.add(itemList3);
-    mainList.item.add(itemList14);
+    mainList.item!.add(itemList);
+    mainList.item!.add(itemList1);
+    mainList.item!.add(itemList2);
+    mainList.item!.add(itemList3);
+    mainList.item!.add(itemList14);
 
     MainList mainList1 = MainList();
     mainList1.ListItemString = "新页面集合";
@@ -166,16 +169,16 @@ class ImageViewModel extends AnBaseViewModel {
     itemList13.imageUrl = "assets/images/BTS.png";
     itemList13.marker = 13;
 
-    mainList1.item.add(itemList4);
-    mainList1.item.add(itemList5);
-    mainList1.item.add(itemList6);
-    mainList1.item.add(itemList7);
-    mainList1.item.add(itemList8);
-    mainList1.item.add(itemList9);
-    mainList1.item.add(itemList10);
-    mainList1.item.add(itemList11);
-    mainList1.item.add(itemList12);
-    mainList1.item.add(itemList13);
+    mainList1.item!.add(itemList4);
+    mainList1.item!.add(itemList5);
+    mainList1.item!.add(itemList6);
+    mainList1.item!.add(itemList7);
+    mainList1.item!.add(itemList8);
+    mainList1.item!.add(itemList9);
+    mainList1.item!.add(itemList10);
+    mainList1.item!.add(itemList11);
+    mainList1.item!.add(itemList12);
+    mainList1.item!.add(itemList13);
 
     list.add(mainList);
     list.add(mainList1);
@@ -217,7 +220,7 @@ class ImageViewModel extends AnBaseViewModel {
             backgroundColor: Colors.grey);
         break;
       case 3:
-        _showNotification();
+        //_showNotification();
         break;
       case 4:
         Get.to(() => CalendarPage(),fullscreenDialog: true,transition: Transition.size,curve: Curves.ease,duration: Duration(milliseconds: 700));
@@ -250,7 +253,7 @@ class ImageViewModel extends AnBaseViewModel {
         Get.to(()=>AnimationCount());
         break;
       case 14:
-        _scan();
+        //_scan();
         break;
       case 15:
         break;
@@ -258,20 +261,17 @@ class ImageViewModel extends AnBaseViewModel {
         break;
     }
   }
-  Future<void> _showNotification() async {
-    var androidPlatformChannelSpecifics = new AndroidNotificationDetails(
-        'your channel id', 'your channel name', 'your channel description',
-        importance: Importance.max, priority: Priority.high);
-    var iOSPlatformChannelSpecifics = new IOSNotificationDetails();
-    var mac = new MacOSNotificationDetails();
-    NotificationDetails platformChannelSpecifics = NotificationDetails(
-        android: androidPlatformChannelSpecifics,
-        iOS: iOSPlatformChannelSpecifics,
-        macOS: mac);
-    await flutterLocalNotificationsPlugin.show(
-        0, 'AnDemo', '测试发送通知成功', platformChannelSpecifics,
-        payload: 'item x');
-  }
+  // Future<void> _showNotification() async {
+  //   var androidPlatformChannelSpecifics = new AndroidNotificationDetails(
+  //       'your channel id', 'your channel name', 'your channel description',
+  //       importance: Importance.max, priority: Priority.high);
+  //
+  //   NotificationDetails platformChannelSpecifics = NotificationDetails(
+  //       android: androidPlatformChannelSpecifics);
+  //   await flutterLocalNotificationsPlugin.show(
+  //       0, 'AnDemo', '测试发送通知成功', platformChannelSpecifics,
+  //       payload: 'item x');
+  // }
   Future selectNotification(String payload) async {
     if (payload != null) {
       debugPrint('notification payload: $payload');
@@ -279,14 +279,14 @@ class ImageViewModel extends AnBaseViewModel {
     Get.to(AndroidHome());
   }
 
-  Future _scan() async {
-     await Permission.camera.request();
-    String barcode = await scanner.scan();
-    if (barcode == null) {
-      print('nothing return.');
-    } else {
-      Get.defaultDialog(title:"扫描结果", middleText: barcode);
-    }
-  }
+  // Future _scan() async {
+  //    await Permission.camera.request();
+  //   String barcode =  scanner.scan();
+  //   if (barcode == null) {
+  //     print('nothing return.');
+  //   } else {
+  //     Get.defaultDialog(title:"扫描结果", middleText: barcode);
+  //   }
+  // }
 
 }

@@ -14,7 +14,7 @@ class Clock extends StatefulWidget {
 }
 
 class _ClockState extends State<Clock> {
-  Timer _timer;
+  Timer? _timer;
   bool _firstSwitch = true;
   bool _secondSwitch = false;
   bool _thirdSwitch = false;
@@ -39,7 +39,7 @@ class _ClockState extends State<Clock> {
   @override
   void dispose() {
     super.dispose();
-    _timer.cancel();
+    _timer!.cancel();
   }
 
 

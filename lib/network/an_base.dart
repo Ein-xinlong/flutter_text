@@ -6,16 +6,16 @@ part 'an_base.g.dart';
 @JsonSerializable(explicitToJson: true)
 class AnResponse {
   @JsonKey(name: "errorCode")
-  int errorCode;
+  int? errorCode;
 
   @JsonKey(name: "errorMsg")
-  String errorMsg;
+  String? errorMsg;
 
   @JsonKey(name: "errorDesc")
-  String errorDesc;
+  String? errorDesc;
 
   @JsonKey(name: "responseId")
-  String responseId;
+  String? responseId;
 
   AnResponse();
 

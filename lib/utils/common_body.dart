@@ -8,9 +8,9 @@ import 'loading.dart';
 class AnCommonBody extends StatelessWidget {
 
   AnPageState pageState;
-  Widget bodyWidget;
-  String tip;
-  String errorIcon;
+  Widget? bodyWidget;
+  String? tip;
+  String? errorIcon;
 
   AnCommonBody(this.pageState , {this.bodyWidget, this.tip, this.errorIcon});
 
@@ -18,18 +18,18 @@ class AnCommonBody extends StatelessWidget {
   Widget build(BuildContext context) {
     if(pageState == AnPageState.Success){
       AnLoading.dismiss();
-      return bodyWidget == null ? Container() : bodyWidget;
+      return bodyWidget == null ? Container() : bodyWidget!;
     }else if(pageState == AnPageState.Error){
       //展示错误页面
       AnLoading.dismiss();
-      return AnErrorWidget(tip: tip , errorIcon: errorIcon);
+      return AnErrorWidget(tip: tip! , errorIcon: errorIcon!);
     }else if(pageState == AnPageState.Loading){
       //展示loading
       return AnLoading.loading();
     }else if(pageState == AnPageState.EmptyData){
       AnLoading.dismiss();
       //展示空页面
-      return  AnErrorWidget(tip: tip , errorIcon: errorIcon);
+      return  AnErrorWidget(tip: tip! , errorIcon: errorIcon!);
     }
 
     return Container();
