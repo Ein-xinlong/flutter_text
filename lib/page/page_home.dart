@@ -17,30 +17,45 @@ class _JhPhotoPickerToolState extends State<JhPhotoPickerTool> {
   ImageViewModel vm = new ImageViewModel();
   final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
       FlutterLocalNotificationsPlugin();
-
+  var _scrollView=ScrollController();
+  var text=0.0;
+  var _backColor;
+  GlobalKey<TextWidgetState> key = GlobalKey();
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     vm.loadingMainList();
+    _scrollView.addListener(() {
+
+      key.currentState.onPressed(_scrollView.offset.toInt());
+    });
   }
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _scrollView.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:const Color(0xFF8CD75),
-      appBar:
-          AnAppbar(titleContent: "主页", backPressCallback: null).buildAppBar(),
+      backgroundColor:_backColor,
+      appBar: AnAppbar(titleContent: "主页", backPressCallback: null,actionWidget: TextWidget(key: key,color:_backColor ,)).buildAppBar(),
       body: ChangeNotifierProvider(
         child: Consumer<ImageViewModel>(
           builder: (context, model, child) {
             return SingleChildScrollView(
+              controller: _scrollView,
               child: Column(
                 children: [
                   BannerTest(),
                   SizedBox(height: 10,),
                   Container(
                     child: _mainList(),
-                  )
+                  ),
+                  SizedBox(height: 500,)//测试颜色的变化，没实际作用
                 ],
               ),
             );
@@ -52,6 +67,7 @@ class _JhPhotoPickerToolState extends State<JhPhotoPickerTool> {
       ),
     );
   }
+
 
   _mainList() {
     return ListView.separated(
@@ -89,6 +105,7 @@ class _JhPhotoPickerToolState extends State<JhPhotoPickerTool> {
             childAspectRatio: 1.2, //子元素的宽高比例
           ),
               shrinkWrap:true,
+            physics: const NeverScrollableScrollPhysics(),
           children:_itemList(mainList.item),
           )
         ],
@@ -128,5 +145,36 @@ class _JhPhotoPickerToolState extends State<JhPhotoPickerTool> {
       widget.add(con);
     }
     return widget;
+  }
+}
+
+class TextWidget extends StatefulWidget {
+  Color color;
+  TextWidget({Key key,this.color}) : super(key: key);
+
+  @override
+  State<StatefulWidget> createState() {
+    return TextWidgetState();
+  }
+}
+
+class TextWidgetState extends State<TextWidget> {
+
+  double textSize=1;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 50,
+      height: 50,
+      color: widget.color,
+      child: Text("6",style:TextStyle(fontSize: textSize) ,),
+    );
+  }
+
+  void onPressed(int count) {
+    setState(() {
+     widget.color=Color.fromARGB(count<255?count:255,248,205,117);
+     textSize=count<50?count.toDouble():count.toDouble();
+    });
   }
 }

@@ -13,6 +13,8 @@ class _BannerTestState extends State<BannerTest> {
   Widget build(BuildContext context) {
     return Container(
       child: ListView.builder(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
           itemCount: 10,
           itemBuilder: (context, i) {
             if (i == 0) {
